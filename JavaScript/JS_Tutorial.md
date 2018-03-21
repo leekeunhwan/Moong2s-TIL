@@ -1,0 +1,242 @@
+> 툴린 부분이 있다면 제보부탁드립니다!
+
+# 1. Today I Learned
+
+## JavaScript Tutorial
+---
+## 대소문자의 구분
+JavaScript 언어는 모든 부분에서 대소문자를 구분합니다.
+Apple과 apple은 JavaScript내에서 완전히 다릅니다.<br/><br/>
+
+## 세미콜론
+JavaScript는 세미콜론(;)을 이용하여 문장의 구문을 구분합니다.
+
+    const animal1 = "pig";
+    let animal2 = "dog";
+    var animal3 = "cow";
+<br/><br/>
+
+## 공백
+JavaScript는 언어의 공백에 민감하지 않습니다. 문법(Syntax)만 잘 지키면 됩니다!<br/><br/>
+
+## 주석(Commment)
+주석은 실행되는 코드가 아니며, 코드에 부가적인 설명을 넣거나 잠시 기능을 꺼놔야하는 코드에 주석처리를 하여 코드를 무효화시킬수 있습니다.
+```
+function add (x,y) {        // add라는 함수를 선언했다고 주석을 통해 설명
+    return x+y;
+}
+
+
+/*
+function multiply (x,y) {
+    return x*y;
+}
+*/                          // 주석처리하여 multiply 함수 무효화
+
+
+/**                         // JavaDoc을 이용해 주석으로 설명하는 문서도 만들 수 있습니다.
+```
+<br/><br/>
+
+## 값과 리터럴
+프로그래밍은 근본적으로 값을 다루는 행위입니다. JavaScript에서도 여러가지 값을 표현하는 문법이 있는데 이를 리터럴이라 합니다.
+```
+숫자(Number) : 1(정수), 2.5(부동소수점 실수)
+문자(String) : 'hello'(작은 따옴표), "World"(큰 따옴표)
+진리(Boolean) : true(참), false(거짓)
+null : null (값이 없음)
+undefined : undefined (정의 안됨)
+
+* 0과 null과 undefined의 차이 *
+0은 숫자로써 값이 없음을 나타내지만 null은 0조차도 없는 상태이다.
+즉, 데이터베이스에 공간은 있지만 아무 값도 없는 상태가 null이 된다.
+undefined은 심지어 데이터베이스에 공간도 없고 데이터도 없는 정의가 아예 안된 상태를 의미한다. 
+```
+<br/><br/>
+
+## 값의 타입
+JavaScript에서 다루어지는 모든 값은 '타입'을 갖고 있습니다. 값의 종류를 타입이라 하는데요.<br/>
+<code>typeof</code> 연산자는 피연산자의 타입을 가리키는 문자열을 반환합니다.
+```
+typeof 1                    // 'number' 
+typeof 0.3                  // 'number'
+typeof 'hi'                 // 'string'
+typeof false                // 'boolean'
+typeof null                 // 'object'
+typeof undefined            // 'undefined'
+``` 
+<br/><br/>
+
+## 표현식과 연산자
+표현식이란 JavsScript 문장의 구성요소를 구분하는 하나의 단위로, 값으로 변환될 수 있는 부분을 가리킵니다.<br/>
+```
+//  사칙연산
+1 + 3;      // 값:4
+3 - 1;      // 값:2 
+3 * 1;      // 값:3
+3 / 1;      // 값:3
+
+// 나머지계산
+12 % 2;     // 값:0
+
+// 우선자 연산순위
+1 + 2 * 3;      // 값:7
+(1 + 2) * 3;    // 값:9
+
+// 논리 연산
+true || false;   // 값:true
+true && false;   // 값:false
+
+// 진리값으로 취급
+1 || 0;         // 값:1
+1 && 0;         // 값:0
+```
+<br/><br/>
+
+## 변수 (variable)
+값을 재사용하기 위해 값에 붙일 이름을 선언하고 그 이름에 값을 대입할 수 있습니다.<br/>
+이 때 이름을 변수라 부릅니다. <code>var</code>와 <code>let</code>에는 값을 여러 번 다시 대입할 수 있지만, <code>const</code>에는 값을 한 번만 대입할 수 있습니다.
+```
+var a = 5;      // 변수 a 선언 및 대입 동시에 
+var a = 7;      // 변수 a의 값을 5에서 7로 갱신 
+
+
+let b = 4;      // 변수 b 선언 및 대입 동시에
+b = 3;          // 변수 b 값을 4에서 3으로 갱신
+let b = 9;      // 에러
+
+
+const c = 9;    // 변수 c 선언 및 대입 동시에
+c = 3;          // 에러 
+const c = 3;    // 에러
+```
+<br/><br/>
+
+## 제어 흐름
+JavaScript는 특정 조건을 만족할 때만 구분을 실행시키거나, 혹은 여러 번 반복 실행시킬수 있습니다.
+```
+// if문
+if (id == 'moong2' && pw == "123456789a") {
+    console.log('환영합니다.');
+} else {
+    console.log('다시 확인 후 입력부탁드립니다.')
+}
+
+
+// for문
+for (var i=0; i<100; i++) {
+    console.log('행복하자');
+}
+
+
+// while문
+let k = 0;
+while (k<5) {
+    console.log(k+'일만 쉬고싶다');
+    k++;
+}
+``` 
+<br/><br/>
+
+## 함수 (function)
+값 뿐만 아니라 코드 뭉치에 이름을 붙여서 사용할 수 있는데, 이를 함수라 합니다.<br/>
+JavaScript에는 함수를 선언할 수 있는 여러가지 방법이 있습니다.
+```
+// 'function' 키워드 이용한 함수 선언
+function average (num1, num2) {
+    return (num1+num2)/2;
+}
+
+
+// arrow function
+const sum = ( x , y ) => x + y;
+
+
+// 함수 호출하기
+average(90,75);
+sum(2,3);
+```
+또한 JavaScript 및 그 구동 환경에 내장되어 있는 여러가지 함수를 사용해서 사용자와 상호작용을 하는 코드를 작성할 수 있습니다.
+```
+// 내장함수 이용
+var name = prompt("이름을 알려주세요");
+alert(name+"님 환영합니다.");
+console.log(name);
+```
+<br/><br/>
+
+## 객체 (Object)
+여러 개의 값을 한꺼번에 담아 통(Container)처럼 사용할 수 있는 자료구조를 지원합니다.<br/>
+JavaScript에서는 객체라는 자료구조가 있습니다.<br/>
+객체에는 이름에 값이 연결되어 있습니다.<br/>
+이를 이름-값 쌍, 혹은 객체의 속성(property)이라고 합니다.<br/>
+객체를 사용할 때는 프로퍼티를 이용해서, 값을 읽거나 쓸 수 있습니다.<br/>
+```
+// 객체 생성
+var moong2 = {
+   name : 'leekeunhwan',
+   age : 29,
+   gender : "male"
+
+}
+
+
+// 객체 속성에 접근하기
+moong2.name;
+moong2.['age'];
+
+
+// 객체의 속성 변경하기
+moong2.name = 'hwanni';
+moong2/['age'] += 1;
+
+
+// 객체 삭제하기
+delete moong2.age; 
+``` 
+객체의 속성을 통해 사용되는 함수를 메소드라고 부릅니다.
+```
+var lkh = {
+    age : 29,
+    nextYear : function () {
+        this.age += 1;
+    }
+};
+
+lkh.nextYear();
+console.log(lkh.age); // 30;
+```
+<br/><br/>
+
+## 배열 (Array)
+JavaScript에서 배열은 객체의 일종으로, 다른 객체와는 다르게 특별 취급됩니다.<br/>
+배열에 담는 데이터는 객체의 경우와 달리 요소(elemnet) 혹은 항목(item)이라고 부릅니다.<br/>
+객체와 마찬가지로 배열 안에 여러 개의 값을 저장할 수 있지만, 배열 요소간에는 순서가 중요하며,<br/>이름 대신에 인데스(index)를 이용해 값에 접근합니다.
+```
+// 배열의 생성
+var food = ['staek','sushi','hamburger'];
+
+arr[0];     // === 'steak' 
+arr[1];     // === 'sushi'
+
+// 여러 타입이 들어있는 배열
+[1, 2, 3, 'a', 'b', {x:0, y:0, name: '취업'}];
+
+// 배열에 요소 추가하기
+food.push('ramen');
+
+// 배열의 요소 삭제하기
+food.splice(1,1);   //  인덱스가 1인 요소부터 시작해서 1개삭제 > 햄버거 삭제
+```
+
+> 그밖에 Boolean타입(진리값)도 학습하였지만 시간관계상 내일 추가토록 하겠습니다.
+
+<br/><br/>
+# 2. Today I Found Out
+```
+스쿨에 들어오기 전에는 리액트와 백엔드 지식이 제일 기대되었던 부분인데
+오늘 있었던 자바스크립트 튜토리얼(전반적으로 간략하게 알아보는 공부)과 
+Boolean 타입 수업을 들으면서 기본적인 내용을 잘 숙지하고 있는지 확인해 볼 수 있었고, 
+앞으로 공부를 함에 있어서 기본적인 내용이라고 쉽게 넘어가기보다 확실히 공부를 하여
+내 것으로 만들어야 겠다는 생각을 하게 되었습니다.
+```
