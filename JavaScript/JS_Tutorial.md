@@ -21,7 +21,7 @@ JavaScript는 언어의 공백에 민감하지 않습니다. 문법(Syntax)만 �
 
 ## 주석(Commment)
 주석은 실행되는 코드가 아니며, 코드에 부가적인 설명을 넣거나 잠시 기능을 꺼놔야하는 코드에 주석처리를 하여 코드를 무효화시킬수 있습니다.
-```
+```javascript 
 function add (x,y) {        // add라는 함수를 선언했다고 주석을 통해 설명
     return x+y;
 }
@@ -57,7 +57,7 @@ undefined은 심지어 데이터베이스에 공간도 없고 데이터도 없�
 ## 값의 타입
 JavaScript에서 다루어지는 모든 값은 '타입'을 갖고 있습니다. 값의 종류를 타입이라 하는데요.<br/>
 <code>typeof</code> 연산자는 피연산자의 타입을 가리키는 문자열을 반환합니다.
-```
+```javascript
 typeof 1                    // 'number' 
 typeof 0.3                  // 'number'
 typeof 'hi'                 // 'string'
@@ -96,7 +96,7 @@ true && false;   // 값:false
 ## 변수 (variable)
 값을 재사용하기 위해 값에 붙일 이름을 선언하고 그 이름에 값을 대입할 수 있습니다.<br/>
 이 때 이름을 변수라 부릅니다. <code>var</code>와 <code>let</code>에는 값을 여러 번 다시 대입할 수 있지만, <code>const</code>에는 값을 한 번만 대입할 수 있습니다.
-```
+```javascript
 var a = 5;      // 변수 a 선언 및 대입 동시에 
 var a = 7;      // 변수 a의 값을 5에서 7로 갱신 
 
@@ -114,7 +114,7 @@ const c = 3;    // 에러
 
 ## 제어 흐름
 JavaScript는 특정 조건을 만족할 때만 구분을 실행시키거나, 혹은 여러 번 반복 실행시킬수 있습니다.
-```
+```javascript
 // if문
 if (id == 'moong2' && pw == "123456789a") {
     console.log('환영합니다.');
@@ -141,7 +141,7 @@ while (k<5) {
 ## 함수 (function)
 값 뿐만 아니라 코드 뭉치에 이름을 붙여서 사용할 수 있는데, 이를 함수라 합니다.<br/>
 JavaScript에는 함수를 선언할 수 있는 여러가지 방법이 있습니다.
-```
+```javascript
 // 'function' 키워드 이용한 함수 선언
 function average (num1, num2) {
     return (num1+num2)/2;
@@ -157,7 +157,7 @@ average(90,75);
 sum(2,3);
 ```
 또한 JavaScript 및 그 구동 환경에 내장되어 있는 여러가지 함수를 사용해서 사용자와 상호작용을 하는 코드를 작성할 수 있습니다.
-```
+```javascript
 // 내장함수 이용
 var name = prompt("이름을 알려주세요");
 alert(name+"님 환영합니다.");
@@ -171,7 +171,7 @@ JavaScript에서는 객체라는 자료구조가 있습니다.<br/>
 객체에는 이름에 값이 연결되어 있습니다.<br/>
 이를 이름-값 쌍, 혹은 객체의 속성(property)이라고 합니다.<br/>
 객체를 사용할 때는 프로퍼티를 이용해서, 값을 읽거나 쓸 수 있습니다.<br/>
-```
+```javascript
 // 객체 생성
 var moong2 = {
    name : 'leekeunhwan',
@@ -195,7 +195,7 @@ moong2/['age'] += 1;
 delete moong2.age; 
 ``` 
 객체의 속성을 통해 사용되는 함수를 메소드라고 부릅니다.
-```
+```javascript
 var lkh = {
     age : 29,
     nextYear : function () {
@@ -212,7 +212,7 @@ console.log(lkh.age); // 30;
 JavaScript에서 배열은 객체의 일종으로, 다른 객체와는 다르게 특별 취급됩니다.<br/>
 배열에 담는 데이터는 객체의 경우와 달리 요소(elemnet) 혹은 항목(item)이라고 부릅니다.<br/>
 객체와 마찬가지로 배열 안에 여러 개의 값을 저장할 수 있지만, 배열 요소간에는 순서가 중요하며,<br/>이름 대신에 인데스(index)를 이용해 값에 접근합니다.
-```
+```javascript
 // 배열의 생성
 var food = ['staek','sushi','hamburger'];
 
