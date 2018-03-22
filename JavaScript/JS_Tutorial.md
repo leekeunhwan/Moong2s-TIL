@@ -229,8 +229,6 @@ food.push('ramen');
 food.splice(1,1);   //  인덱스가 1인 요소부터 시작해서 1개삭제 > 햄버거 삭제
 ```
 
-> 그밖에 Boolean타입(진리값)도 학습하였지만 시간관계상 내일 추가토록 하겠습니다.
-
 <br/><br/>
 # 2. Today I Found Out
 ```
