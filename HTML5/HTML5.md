@@ -6,7 +6,7 @@
 마크업 언어는 일련의 마크업 태그로 구성되며, HTML 문서는 이러한 태그로 구성됩니다.<br/>
 각각의 HTML태그는 다른의미를 갖고 있습니다.<br/>
 
-HTML의 진화과정(?)
+HTML의 진화과정(?) 
 ```
 [ SGML => HTML => HTML+ => HTML 2.0 => HTML 3.2 => HTML 4.01, XML 1.0 => XHTML 1.0 => XHTML 2.0 => HTML5 ]
 ```
