@@ -1,4 +1,4 @@
-# HTML
+# 1. Today I Learned
 
 ## HTML이란?
 ---
@@ -110,3 +110,11 @@ Semantic Naming : 단어와 단어를 연결해주는 방법 (카멜케이스 �
 * main+ariticle은 본문
 * footer는 제일 아래에 있는 내용
 
+# 2. Today I Found Out
+```
+HTML이라는 것을 너무 가볍게 생각하고 있었는데
+수업을 통해서 많은 부분을 공부하게 되었고,
+오늘 배운 것도 일부분이라 생각하니 더욱 공부해야겠다고 생각합니다.
+HTML이 없이는 CSS와 JavaScript도 없다는 것을 다시금 생각하고,
+HTML부터 공부를 꼼꼼히 해나가서 기초를 탄탄하게 하도록 하겠습니다.
+```
