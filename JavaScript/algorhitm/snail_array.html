@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>달팽이 배열</title>
+</head>
+
+<body>
+    <h1>달팽이 배열</h1>
+    <p>
+        <h5>원하는 값을 입력하시오
+            <br /> ex) '5' 입력시 'row=5, col=5'</h5>
+    </p>
+    <script>
+        function snail() {
+            let ea = document.getElementById('ea').value;
+            if (ea != "") {
+                let arr = new Array();
+                for (let i = 0; i < ea; i++) {
+                    arr[i] = new Array();
+                    for (let j = 0; j < ea; j++) {
+                        arr[i][j] = "★";
+                    }
+                }
+                let start_x = 0;
+                let start_y = 0;
+                let count = 1;
+                let direction = "right";
+                while (arr[start_x][start_y] && arr[start_x][start_y] == "★" && count <= (ea * ea)) {
+
+                    arr[start_x][start_y] =
+                        "<span style='display: inline-block; text-align:center; font-size:11px; width:30px; height:30px; line-height:30px; border:1px solid #ddd;'>" +
+                        count + "</span>";
+                    count++;
+
+                    if (direction == "right") {
+                        if (arr[start_x][start_y + 1] && arr[start_x][start_y + 1] == "★") {
+                            start_y++;
+                        } else {
+                            direction = "down";
+                            start_x++;
+                        }
+
+                    } else if (direction == "down") {
+                        if (arr[start_x + 1] && arr[start_x + 1][start_y] && arr[start_x + 1][start_y] == "★") {
+                            start_x++;
+                        } else {
+                            direction = "left";
+                            start_y--;
+                        }
+
+                    } else if (direction == "up") {
+                        if (arr[start_x - 1][start_y] && start_x > 0 && arr[start_x - 1][start_y] == "★") {
+                            start_x--;
+                        } else {
+                            direction = "right";
+                            start_y++;
+                        }
+
+                    } else /*이게 왼쪽방향 */ {
+                        if (arr[start_x][start_y - 1] && start_y > 0 && arr[start_x][start_y - 1] == "★") {
+                            start_y--;
+                        } else {
+                            direction = "up";
+                            start_x--;
+                        }
+                    }
+                }
+
+                for (let i = 0; i < ea; i++) {
+                    for (let j = 0; j < ea; j++) {
+                        document.write(arr[i][j]);
+                    }
+                    document.write("<br />");
+                }
+            }
+        }
+    </script>
+    <input type="text" id="ea" name="ea" value="" />
+    <input type="button" value="시작" onclick="snail();" />
+</body>
+
+</html>
