@@ -488,6 +488,7 @@ arr.concat([3, 4], [5, 6], [7, 8]); //  [1,2,3,4,5,6,7,8]
 const arr = [1, 2, 3];
 
 arr.reduce((acc, item) => acc + item, 0); //  6
+// 동작 방식은 acc += item 과 같다고 볼 수 있습니다.
 ```
 
 위 코드에서 일어난 일을 순서대로 써보면 다음과 같습니다.<br/>
@@ -501,7 +502,7 @@ arr.reduce((acc, item) => acc + item, 0); //  6
 4. 더 이상 요소가 없으므로 reduce 호출의 결과값은 6이 됩니다.
 ```
 
-reduce 는 배열에 대한 계산을 하는 만능 도구로 사용 가능합니다.<br/>
+reduce 는 배열에 대한 계산을 하는 만능 도구로 사용 가능합니다. (자유도가 높습니다)<br/>
 실제로 배열의 많은 메소드들이 reduce 를 통해 다시 구현될 수 있습니다. (연습해보기)<br/>
 <br/>
 `reduce`에 주어지는 함수 역시 `forEach`나 `map`과 마찬가지로 여러 개의 인수를 받는데,<br/>
@@ -535,6 +536,46 @@ arr.reduce((acc, item) => {
 ```
 
 계산을 오른쪽부터 수행하고 싶을 경우에는 `reduceRight` 메소드를 사용하면 됩니다.
+
+```js
+// reduce를 통한 map 메소드 구현
+function map(arr, func) {
+  return arr.reduce((acc, item) => {
+    acc.push(func(item));
+    return acc;
+  }, []);
+}
+
+map([1, 2, 3], x => x * 2);
+
+// reduce를 통한 filter 메소드 구현
+function filter(arr, func) {
+  return arr.reduce((acc, item) => {
+    if (func(item)) {
+      acc.push(item);
+    }
+    return acc;
+  }, []);
+}
+
+filter([1, 2, 3, 4, 5], x => x % 2 === 0);
+
+// reduce를 통한 sort 메소드 구현
+function sort(arr, func) {
+  return arr.reduce((acc, item) => {
+    let i;
+    for (i = 0; i < acc.length; i++) {
+      if (func(item, acc[i]) < 0) {
+        break;
+      }
+    }
+    acc.splice(i, 0, item);
+    return acc;
+  }, []);
+}
+
+sort([3, 1, 5, 4, 2], (x, y) => x - y);
+```
 
 <br/><br/>
 
