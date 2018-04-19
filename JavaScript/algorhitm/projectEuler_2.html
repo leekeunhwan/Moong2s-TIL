@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로젝트 오일러 문제 2번</title>
+</head>
+
+<body>
+    <script>
+        // 피보나치 수열의 각 항은 바로 앞의 항 두 개를 더한 것이 됩니다.1 과 2 로 시작하는 경우 이 수열은 아래와 같습니다.
+        // 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
+        // 짝수이면서 4 백만 이하인 모든 항을 더하면 얼마가 됩니까 ?
+
+        let num = 0; // 매개변수 설정
+        let answer = 0; // 정답을 담을 변수 설정
+
+        while (true) {
+            pibo = fibonacci(num); // 피보라는 변수에 피보나치 수열 함수를 값으로 할당
+            if (pibo % 2 === 0) { //  만약 피보라는 변수(즉, 피보나치 수열을 구한 값)가 짝수라면
+                answer += pibo; //  피보를 정답에 더하고 계속 연산한다.
+            }
+
+            if (pibo > 4000000) { //  피보가 4000000보다 클경우 (4000000이하 달성시)
+                console.log(answer); //  콘솔창에 정답을 띄운다.  : 정답은 [4613732]
+                break; //  그리고 종료
+            }
+            num++; // 만약 위의 if문에 해당하지않는경우(pibo의 값이 홀수 일 경우) num의 값을 1씩 증가시킨다.
+        }
+
+        function fibonacci(num) { //  피보나치 수열 구현
+            let result = 0;
+            if (num > 1) {
+                result = fibonacci(num - 1) + fibonacci(num - 2);
+            } else if (num <= 1) {
+                return num;
+            }
+            return result;
+        }
+    </script>
+</body>
+
+</html>

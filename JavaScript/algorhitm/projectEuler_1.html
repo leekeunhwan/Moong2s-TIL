@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로젝트 오일러 문제 1번</title>
+</head>
+
+<body>
+    <script>
+        // 10보다 작은 자연수 중에서 3 또는 5의 배수는 3, 5, 6, 9 이고, 이것을 모두 더하면 23입니다.
+        // 1000보다 작은 자연수 중에서 3 또는 5의 배수를 모두 더하면 얼마일까요 ?
+        function problem1() {
+            let three = 0;
+            let five = 0;
+            let fifteen = 0;
+            for (i = 1; i < 1000; i++) { // 1000보다 작은 자연수이기 때문에 0보다 크고 1000보다 작게 설정
+                if (i % 3 === 0) { //  3의 배수일때
+                    three += i;
+                } else if (i % 5 === 0) { //  5의 배수일때
+                    five += i;
+                } else if (i % 3 === 0 && i % 5 === 0) { //  3의 배수이면서 5의 배수인 숫자는 중복값이므로 빼준다.
+                    fifteen += i;
+                }
+            }
+            console.log(three + five - fifteen);
+        }
+
+        problem1(); // 233168 - 정답!
+    </script>
+</body>
+
+</html>

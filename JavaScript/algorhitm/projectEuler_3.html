@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로젝트 오일러 문제 2번</title>
+</head>
+
+<body>
+    <script>
+        // 어떤 수를 소수의 곱으로만 나타내는 것을 소인수분해라 하고, 이 소수들을 그 수의 소인수라고 합니다.
+        // 예를 들면 13195 의 소인수는 5, 7, 13, 29 입니다.
+        // 600851475143 의 소인수 중에서 가장 큰 수를 구하세요.
+
+        function soinsoo(num) {
+            for (let i = 2; i <= num; i++) { // 소수인지 판별하기 위해서는 2부터 대상숫자까지 나눠보면 알 수 있다.
+                if (num % i === 0) { //  숫자를 i로 나눴을 때 0이라면 (i가 num의 약수라면)
+                    num = num / i; //  num이 1이 될 때까지 나눕니다.
+                    console.log(i); // 나눌때 마다 i를 출력시킵니다. i가 num보다 크면 식이 종료!
+                }
+            }
+        }
+
+        soinsoo(600851475143); //  71, 839, 1471, 6857 -> 정답은 6857!
+    </script>
+</body>
+
+</html>
