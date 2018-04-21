@@ -1,0 +1,86 @@
+<template name="addressList">
+    <table class="table table-bordered table-condensed table-striped table-hover">
+        <thead>
+            <tr class="info">
+                <th>이름</th>
+                <th>전화번호</th>
+                <th>이메일</th>
+                <th>회사</th>
+                <th>생일</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each list}} {{> addressListItem}} {{/each}}
+        </tbody>
+    </table>
+</template>
+
+<template name="addressInput">
+    <div class="well" style="text-align: center">
+        <div class="form-inline">
+            <div class="form-group">
+                <input type="text" class="form-control" name="name" placeholder="이름">
+                <input type="text" class="form-control" name="phone" placeholder="전화번호">
+                <input type="text" class="form-control" name="email" placeholder="이메일">
+                <input type="text" class="form-control" name="company" placeholder="회사">
+                <input type="text" class="form-control" name="birthday" placeholder="생일">
+                <button class="btn btn-info btn-sm" name="saveAddress">
+                    <i class="glyphicon glyphicon-ok"></i>등록
+                </button>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="addressListItem">
+    {{#if editing}}
+    <tr>
+        <td>
+            <input type="text" style="width: 100%" name="name" value="{{name}}" />
+        </td>
+        <td>
+            <input type="text" style="width: 100%" name="phone" value="{{phone}}" />
+        </td>
+        <td>
+            <input type="text" style="width: 100%" name="email" value="{{email}}" />
+        </td>
+        <td>
+            <input type="text" style="width: 100%" name="company" value="{{company}}" />
+        </td>
+        <td>
+            <input type="text" style="width: 100%" name="birthday" value="{{birthday}}" />
+        </td>
+        <td>
+            <button class="btn btn-info btn-sm" name="save">
+                <i class="glyphicon glyphicon-ok"></i>저장</button>
+            <button class="btn btn-default btn-sm" name="cancel">
+                <i class="glyphicon glyphicon-repeat"></i>취소</button>
+        </td>
+    </tr>
+    {{else}}
+    <tr>
+        <td>
+            <div class="edit-thing">{{name}}</div>
+        </td>
+        <td>
+            <div class="edit-thing">{{phone}}</div>
+        </td>
+        <td>
+            <div class="edit-thing">{{email}}</div>
+        </td>
+        <td>
+            <div class="edit-thing">{{company}}</div>
+        </td>
+        <td>
+            <div class="edit-thing">{{birthday}}</div>
+        </td>
+        <td>
+            <button class="btn btn-warning btn-sm" name="remove">
+                <i class="glyphicon glyphicon-trash"></i>삭제</button>
+            <button class="btn btn-info btn-sm" name="modify">
+                <i class="glyphicon glyphicon-wrench"></i>수정</button>
+        </td>
+    </tr>
+    {{/if}}
+</template>
