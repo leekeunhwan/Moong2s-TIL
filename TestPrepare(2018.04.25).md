@@ -304,8 +304,8 @@ CSS 우선 순위는 다음과 같습니다.<br/>
 
 > 정답 : p#content
 
-!important 가 우선순위가 높지만 !important 는 선택자가 아닌 예약어입니다!
-그러므로 그 다음으로 순위가 높은 p#content(id)가 정답입니다.
+!important 가 우선순위가 높지만 !important 는 선택자가 아닌 예약어입니다!<br/>
+그러므로 그 다음으로 순위가 높은 p#content(id)가 정답입니다.<br/>
 
 <br/>
 
