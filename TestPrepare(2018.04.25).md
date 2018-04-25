@@ -298,6 +298,17 @@ CSS 우선 순위는 다음과 같습니다.<br/>
 
 <br/>
 
+## 다음중 css 우선 순위가 가장 높은 선택자는 무엇일까요?
+
+보기 : p, p.content, !important, p#content, html>p<br/>
+
+> 정답 : p#content
+
+!important 가 우선순위가 높지만 !important 는 선택자가 아닌 예약어입니다!
+그러므로 그 다음으로 순위가 높은 p#content(id)가 정답입니다.
+
+<br/>
+
 ## CSS 파일에 어떻게 주석을 추가할까요?
 
 보기 : `/* 주석 */`, `// 주석 //` , `// 주석`, `<!주석>`
