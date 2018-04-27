@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로젝트 오일러 문제 5번</title>
+</head>
+
+<body>
+    <script>
+        // 1~10 사이의 어떤 수로도 나누어 떨어지는 가장 작은 수는 2520입니다.
+        // 그러면 1~20 사이의 어떤 수로도 나누어 떨어지는 가장 작은 수는 얼마입니까 ?
+
+        var num = 1;
+        var isDiv = 0;
+        while (true) {
+            isDiv = 0; // true
+            for (var i = 1; i <= 20; i++) { // 실행
+                isDiv += num % i; // isDiv에 num을 1부터 20까지 나눈 수를 저장
+            }
+            if (isDiv == 0) { // isDiv가 1~20까지 모든 수로 나누어지면
+                console.log(num); // num을 출력 - 232792560
+                break; // 식 종료
+            }
+
+            num++; //  아니면 num의 숫자 증가
+        }
+
+        /*
+        개인적으로는 이게 베스트 답인 것 같다.
+
+        function euclid(a, b) {
+            if (b == 0) return a;
+            return euclid(b, a % b);
+        }
+        최대 공약수
+        function gcd(a, b) {
+            return euclid(Math.max(a, b), Math.min(a, b));
+        }
+        최소 공배수
+        function lcm(a, b) {
+            return (a * b) / gcd(a, b);
+        }
+        1~n까지의 최소 공배수
+        function getNumsLcm(n) {
+            var temp = 2;
+            for (var i = 3; i < n; i++)
+                temp = lcm(temp, i);
+            return temp;
+        }
+        */
+    </script>
+</body>
+
+</html>

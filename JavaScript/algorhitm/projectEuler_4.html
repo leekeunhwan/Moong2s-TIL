@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로젝트 오일러 문제 4번</title>
+</head>
+
+<body>
+    <script>
+        // 앞에서부터 읽을 때나 뒤에서부터 읽을 때나 모양이 같은 수를 대칭수(palindrome) 라고 부릅니다.
+        // 두 자리 수를 곱해 만들 수 있는 대칭수 중 가장 큰 수는 9009( = 91× 99) 입니다.
+        // 세 자리 수를 곱해 만들 수 있는 가장 큰 대칭수는 얼마입니까 ?
+
+        function palindrome() {
+            let multipleVal = 0; // 곱한값을 저장할 변수 
+            let result = 0; // 결과를 나타낼 변수
+            for (let i = 900; i < 999; i++) { //  세자리 수면 100부터이지만 큰수를 찾는 것이기에 초기값을 900으로 설정
+                for (let j = 900; j < 999; j++) {
+                    multipleVal = i * j; //  곱한 값을 변수에 저장
+                    result = multipleVal.toString(); //  변수가 숫자이기에 문자열로 형변환
+                    resultReverse = result.split("").reverse().join(''); //  형변환 한 것을 변수로 바꿔 리버스를 한뒤 다시 문자열로 반환
+                    if (result === resultReverse) { // 숫자를 문자열로 변환한 값과 거꾸로 뒤집은 문자와 값이 일치하면 대칭수가 된다!
+                        console.log(result); //  결과 도출 - 906609
+                    }
+                }
+            }
+        }
+
+        // 총평 : 굉장히 원하는 대로 알고리즘이 풀리지않고 여러값중 큰값을 골라 답을 맞추게 되었다.
+        // 뭔가 탐탁치 않은데 다시 풀어봐야겠다.
+
+        /*
+        function reverse(s){    //   reverse 기능을 함수로 구현
+        return s.split("").reverse().join("");
+        }
+
+        let result = 0; // 결과를 담을 변수 선언
+        for (let n1 = 100; n1 < 1000; n1++) {
+            for (let n2 = 100; n2 < 1000; n2++) {
+                let sum = n1 * n2; // 곱한 값을 변수 sum에 대입
+                if ((String(sum) == reverse(String(sum))) && (result < sum)) {  // 문자열로 바꾼 sum과 뒤집은 문자열 sum이 같고, result보다 sum이 크면 
+                    result = sum;   //  결과를 담을 변수에 sum을 대입한다.
+                }
+            }
+        }
+        console.log(result); // 결과값 출력
+        */
+
+        // 아까보다 상당히 간결해진 것 같다. 그리고 효율성도 좋다.
+    </script>
+</body>
+
+</html>
