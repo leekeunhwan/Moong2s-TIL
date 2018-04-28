@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로젝트 오일러 문제 7번</title>
+</head>
+
+<body>
+    <script>
+        /* 소수를 크기 순으로 나열하면 2, 3, 5, 7, 11, 13, ... 과 같이 됩니다. 이 때 10,001번째의 소수를 구하세요. */
+        let num = 2; // 소수는 2부터 시작하므로 2로 설정
+        let priCnt = 0; // 소수를 카운트 하기 위해 변수 설정
+        while (num) {
+            let priNum = true; //  미리 소수라고 가정을 한다.
+            for (divNum = 2; divNum < num; divNum++) {
+                //  소수를 구하기 위해서 자기자신보다 작은 수로 나눠야 하기에 for 루프 설정
+                if (num % divNum === 0) { // 숫자가 나누는 숫자로 나눠지면 소수가 아님으로
+                    priNum = false; // false 반환
+                    break; // 구문 종료
+                }
+            }
+            if (priNum) { // 만약 소수라면
+                priCnt++; // 소수를 세는 변수를 1 증가시킨다.(하나씩 센다.)
+            }
+            if (priCnt === 10001) { //  10001번째 함수이면
+                console.log(num); // 콘솔에 출력 - 104743
+                break; // 해당 구문 종료
+            }
+            num++; // 10001번째 소수가 나올때까지 숫자를 계속 늘리고 나누고 반복한다.
+        }
+    </script>
+</body>
+
+</html>
