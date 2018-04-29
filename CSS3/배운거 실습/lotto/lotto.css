@@ -1,0 +1,70 @@
+@charset "UTF-8";
+@import url('./normalize.css');
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+/* @import url('./reset.css'); */
+
+* {
+  font-family: 'Hanna';
+}
+
+html,
+body {
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  background-image: linear-gradient(180deg, #2af598 0%, #009efd 100%);
+  color: #ffffff;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid white;
+  border-radius: 20px;
+  margin: 10vh;
+  height: 80vh;
+}
+
+.banner_top {
+  margin-top: 5vh;
+  height: 20vh;
+  font-size: 300%;
+  text-align: center;
+}
+
+.banner_top .mainText {
+  text-shadow: 0 0 3px #fffff0;
+  color: white;
+  font-size: 300%;
+}
+
+.main {
+  margin-top: 10vh;
+  height: 10vh;
+  font-size: 200%;
+}
+
+.draw {
+  width: 16vh;
+  height: 8vh;
+  border: 3px white solid;
+  border-radius: 10px;
+  background: transparent;
+  color: white;
+  margin-bottom: 5vh;
+  font-size: 1.5rem;
+}
+
+.draw:hover,
+.draw:focus {
+  background: white;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.drawNum {
+  font-size: 2rem;
+}
