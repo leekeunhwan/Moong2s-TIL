@@ -14,3 +14,5 @@
 좀 더 애니메이션 효과와 부드러운 조작을 추가해볼 예정입니다.<br/>
 
 ### 추첨하러 가기
+
+> http://dlrmsghks7.dothome.co.kr/lotto.html
