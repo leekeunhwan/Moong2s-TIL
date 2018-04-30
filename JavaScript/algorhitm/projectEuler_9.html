@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로젝트 오일러 문제 9번</title>
+</head>
+
+<body>
+    <script>
+        /*  세 자연수 a, b, c 가 피타고라스 정리 a(2) + b(2) = c(2) 를 만족하면 피타고라스 수라고 부릅니다 (여기서 a < b < c ).
+        예를 들면 3(2) + 4(2) = 9 + 16 = 25 = 5(2)이므로 3, 4, 5는 피타고라스 수입니다.
+        a + b + c = 1000 인 피타고라스 수 a, b, c는 한 가지 뿐입니다. 이 때, a × b × c 는 얼마입니까?*/
+        let a, b, c = 0; // 피타고라스 수의 인자는 3개 이므로 변수 3개를 선언
+
+        for (c = 0; c <= 997; c++) { // a+b+c의 합이 1000이면서 a<b<c이므로 c의 최대값인 997을 루프 종료 조건으로 지정
+            for (b = 0; b <= 498; b++) { // b는 c보다 커서 안되므로 최대값인 498을 루프 종료 조건으로 지정
+                for (a = 0; a <= 332; a++) { // a도 333을 넘으면 a<b<c가 성립이 안되므로 최대값인 332를 루프 종료 조건으로 지정
+                    if (parseInt(Math.pow(a, 2)) + parseInt(Math.pow(b, 2)) == parseInt(Math.pow(c, 2)) && a + b + c ==
+                        parseInt(1000)) { // 만약 a의 2제곱과 b의 2제곱이 c의 2제곱과 같으면서 a+b+c의 합이 1000이라면
+                        console.log(a * b * c); // a,b,c를 곱해서 출력 - 31875000
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
