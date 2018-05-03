@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로젝트 오일러 문제 10번</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        10 이하의 소수를 모두 더하면 2 + 3 + 5 + 7 = 17 이 됩니다.
+        이백만(2,000,000) 이하 소수의 합은 얼마입니까? */
+        let sum = 0; // 이백만 이하 소수의 합을 담을 변수 선언
+
+        for (i = 2; i <= 2000000; i++) { // 2000000만 이하의 소수의 합을 얻기 위해 루프 작성
+            for (j = 2; j <= i; j++) { // 소수는 자기자신보다 작은 수로 나누면 판별 가능 하기에 소수 판별 루프 작성
+                if (i % j == 0 && i != j) break; // 약수로 나누어질때만 루프 종료
+                if (i == j) { //  자기자신으로만 나뉠 경우
+                    sum += j; // sum변수의 값으로 할당
+                }
+                console.log(sum); // 결과 출력 - 142913828922
+            }
+        }
+
+        // 문제는 계산시간이 대략 10분 가까이 걸리기도 한다는 것..
+        // 추후에 다시 풀어볼 예정입니다.
+    </script>
+</body>
+
+</html>
