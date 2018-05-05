@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로그래머스 문제 2번</title>
+</head>
+
+<body>
+    <script>
+    // 별이는 헬로월드텔레콤에서 고지서를 보내는 일을 하고 있습니다. 개인정보 보호를 위해 고객들의 전화번호는 맨 뒷자리 4자리를 제외한 나머지를 "*"으로 바꿔야 합니다.
+    // 전화번호를 문자열 s로 입력받는 hide_numbers함수를 완성해 별이를 도와주세요
+    // 예를들어 s가 "01033334444"면 "*******4444"를 리턴하고, "027778888"인 경우는 "*****8888"을 리턴하면 됩니다
+        function hide_numbers(s){
+        let result = "" // 결과값을 담을 변수
+        let newStr = s; // 인자를 담을 변수
+        for (let i=0; i<newStr.length-4; i++) { // 마지막 4자리를 제외한 나머지를 *로 바꿔야 하므로 for 루프를 newStr.length의 마지막 4자리전까지 실행
+  	        newStr = newStr.replace(newStr[i], "*");    // 마지막 4자리를 제외한 나머지를 *로 바꾼다.
+        }
+        result = newStr;    // 결과가 담긴 newStr을 result의 값으로 할당
+        return result;  // 결과 출력
+        }
+
+        // 아래는 테스트로 출력해 보기 위한 코드입니다.
+        console.log("결과 : " + hide_numbers('01033334444'));   //  *******4444
+    </script>
+</body>
+
+</html>
