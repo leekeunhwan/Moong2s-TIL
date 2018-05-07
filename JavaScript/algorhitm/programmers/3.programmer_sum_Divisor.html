@@ -12,18 +12,18 @@
     <script>
     // 어떤 수를 입력받아 그 수의 약수를 모두 더한 수 sumDivisor 함수를 완성해 보세요. 
     // 예를 들어 12가 입력된다면 12의 약수는 [1, 2, 3, 4, 6, 12]가 되고, 총 합은 28이 되므로 28을 반환해 주면 됩니다.
-    function sumDivisor(num) {
-	    let answer = 0; // 정답을 담을 변수 선언
-	    for (let i=0; i<=num; i++) {    // 0부터 num까지 나누는 과정을 통해 약수를 구하므로
-            if(num%i==0) {  // 나누고 남은 나머지가 0이면(나누어 떨어지면, 즉 약수이면)
-                answer += i;    //  answer에 값으로 넣는다.
+        function sumDivisor(num) {
+	        let answer = 0; // 정답을 담을 변수 선언
+	        for (let i=0; i<=num; i++) {    // 0부터 num까지 나누는 과정을 통해 약수를 구하므로
+                if(num%i==0) {  // 나누고 남은 나머지가 0이면(나누어 떨어지면, 즉 약수이면)
+                    answer += i;    //  answer에 값으로 넣는다.
+                }
             }
+	        return answer;  //  정답 출력
         }
-	    return answer;  //  정답 출력
-    }
 
-// 아래는 테스트로 출력해 보기 위한 코드입니다.
-console.log(sumDivisor(12));    //  28
+        // 아래는 테스트로 출력해 보기 위한 코드입니다.
+        console.log(sumDivisor(12));    //  28
     </script>
 </body>
 
