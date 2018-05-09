@@ -1,0 +1,9 @@
+<template name="roomList">
+    &nbsp; {{#each list}} {{> roomListItem}} {{/each}}
+</template>
+
+<template name="roomListItem">
+    <p>
+        <a name="selectRoom" href="#">{{name}}</a>
+    </p>
+</template>
