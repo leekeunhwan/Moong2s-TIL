@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로그래머스 문제 6번</title>
+</head>
+
+<body>
+    <script>
+        // adder함수는 정수 a, b를 매개변수로 입력받습니다.
+        // 두 수와 두 수 사이에 있는 모든 정수를 더해서 리턴하도록 함수를 완성하세요.a와 b가 같은 경우는 둘 중 아무 수나 리턴하세요.
+        // 예를들어 a가 3, b가 5이면 12를 리턴하면 됩니다.
+        // a, b는 음수나 0, 양수일 수 있으며 둘의 대소 관계도 정해져 있지 않습니다.
+
+        function adder(a, b) {
+            let result = 0 // 결과를 담을 변수 선언
+            let num1 = a; // 매개변수 a를 담을 변수 선언
+            let num2 = b; // 매개변수 b를 담을 변수 선언
+            if (a < b) { // a가 b보다 작을 때
+                for (let i = num1; i <= num2; i++) { // i는 num1(a)부터 시작해서 num2(b)의 값과 같을 때까지 증가 = 두 수 상이의 모든 수를 구할수 있게
+                    result += i; // 결과값에 i를 담는다.
+                    console.log(i);
+                }
+            } else if (a > b) { // a가 b보다 클 때
+                for (let i = num2; i <= num1; i++) { // i는 num2(b)부터 시작해서 num1(a)의 값과 같을 때까지 증가
+                    result += i; // 결과값에 i를 담는다.
+                    console.log(i);
+                }
+            }
+            return result; // 결과출력
+        }
+        // 아래는 테스트로 출력해 보기 위한 코드입니다.
+        console.log(adder(3, 5)) //  12
+    </script>
+</body>
+
+</html>
