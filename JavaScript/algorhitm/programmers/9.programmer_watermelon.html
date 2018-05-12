@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로그래머스 문제 9번</title>
+</head>
+
+<body>
+    <script>
+        // water_melon함수는 정수 n을 매개변수로 입력받습니다.
+        // 길이가 n이고, 수박수박수...와 같은 패턴을 유지하는 문자열을 리턴하도록 함수를 완성하세요.
+        // 예를들어 n이 4이면 '수박수박'을 리턴하고 3이라면 '수박수'를 리턴하면 됩니다.
+
+        function waterMelon(n) {
+            let result = "" // 결과를 담을 변수 선언
+            for (let i = 0; i < n; i++) { // i가 n까지 될때까지 for loop 실행
+                if (i % 2 == 0) { // 루프가 0부터 시작하므로 조건문을 만족하면
+                    result += "수" // 수를 값으로 담는다.
+                } else { // 만족하지 않을 경우
+                    result += "박" // 박을 값으로 담는다.
+                }
+            }
+            return result;
+        } // 실행을 위한 테스트코드입니다. 
+        console.log("n이 3인 경우: " + waterMelon(3)) // 수박수
+        console.log("n이 4인 경우: " + waterMelon(4)) // 수박수박
+    </script>
+</body>
+
+</html>
