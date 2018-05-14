@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로그래머스 문제 9번</title>
+</head>
+
+<body>
+    <script>
+        // nextSqaure함수는 정수 n을 매개변수로 입력받습니다.
+        // n이 임의의 정수 x의 제곱이라면 x+1의 제곱을 리턴하고, n이 임의의 정수 x의 제곱이 아니라면 'no'을 리턴하는 함수를 완성하세요.
+        // 예를들어 n이 121이라면 이는 정수 11의 제곱이므로 (11+1)의 제곱인 144를 리턴하고, 3이라면 'no'을 리턴하면 됩니다.
+
+        function nextSqaure(n) {
+            let result = 0; // 결과를 담을 변수 선언
+            for (let x = 0; x < n; x++) { //  임의의 정수 x가 무엇인지 알기위해 for loop 실행
+                if (n == Math.pow(x, 2)) { //  n이 x의 제곱이 맞으면
+                    result = Math.pow(x + 1, 2); //  result에 x+1의 제곱을 값으로 할당
+                    break; //  원하는 답을 찾았으니 종료
+                } else {
+                    result = 'no'; // 원하는 값을 찾아도 안나오고 결과가 false이면 no라는 텍스트 출력
+                }
+            }
+            return result; // 결과 출력
+        }
+        // 아래는 테스트로 출력해 보기 위한 코드입니다. 
+        console.log("결과 : " + nextSqaure(144)); //  169
+    </script>
+</body>
+
+</html>
