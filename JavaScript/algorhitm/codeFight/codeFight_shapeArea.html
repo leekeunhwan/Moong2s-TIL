@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>codeFight 문제 4번</title>
+</head>
+
+<body>
+    <script>
+        // Given the string, check if it is a palindrome.
+
+        // Example
+
+        // For inputString = "aabaa", the output should be
+        // checkPalindrome(inputString) = true;
+        // For inputString = "abac", the output should be
+        // checkPalindrome(inputString) = false;
+        // For inputString = "a", the output should be
+        // checkPalindrome(inputString) = true.
+        // Input/Output
+
+        // [execution time limit] 4 seconds (js)
+
+        // [input] string inputString
+
+        // A non-empty string consisting of lowercase characters.
+
+        // Guaranteed constraints:
+        // 1 ≤ inputString.length ≤ 105.
+
+        // [output] boolean
+
+        // true if inputString is a palindrome, false otherwise.
+
+        function checkPalindrome(inputString) { // 회문 체크
+            let strArr = inputString.split(''); // 원본 문자와 거꾸로 뒤집었을 때의 일치한지 알아보기위해 배열로 바꿈
+            if (strArr.join('') === strArr.reverse().join('')) { // 배열의 reverse메소드와 join메소드를 사용하여 문자열 비교
+                return true; // 같은 경우 true - a같은 한글자는 뒤집거나 안뒤집거나 같아서 따로 정해줄 필요가 없음
+            } else {
+                return false; // 아닌 경우 false
+            }
+        }
+        checkPalindrome('aabaaa'); // false
+    </script>
+</body>
+
+</html>

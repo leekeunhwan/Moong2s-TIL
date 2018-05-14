@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>codeFight 문제 5번</title>
+</head>
+
+<body>
+    <script>
+        // Ratiorg got statues of different sizes as a present from CodeMaster for his birthday, each statue having an non-negative
+        // integer size. Since he likes to make things perfect, he wants to arrange them from smallest to largest so that each statue
+        // will be bigger than the previous one exactly by 1. He may need some additional statues to be able to accomplish that. Help
+        // him figure out the minimum number of additional statues needed.
+
+        // Example
+
+        // For statues = [6, 2, 3, 8], the output should be
+        // makeArrayConsecutive2(statues) = 3.
+
+        // Ratiorg needs statues of sizes 4, 5 and 7.
+
+        // Input/Output
+
+        // [execution time limit] 4 seconds (js)
+
+        // [input] array.integer statues
+
+        // An array of distinct non-negative integers.
+
+        // Guaranteed constraints:
+        // 1 ≤ statues.length ≤ 10,
+        // 0 ≤ statues[i] ≤ 20.
+
+        // [output] integer
+
+        // The minimal number of statues that need to be added to existing statues such that 
+        // it contains every integer size from an interval [L, R] (for some L, R) and no other sizes.
+
+        function makeArrayConsecutive2(statues) {
+            let count = 0; // 숫자 사이에 비어있는 수의 개수를 셀 변수 선언
+            let newArr = statues.sort(function (a, b) {
+                return a - b; // 매개변수로 받은 배열을 작은수부터 큰수로 정렬시켜서 newArr 변수의 값으로 넣는다.
+            })
+            for (let i = 0; i < newArr.length; i++) {
+                if (Number.isNaN(newArr[i + 1] - 1) === false) { // newArr[i]를 기준으로 옆 숫자가 NaN이 아닐떄 (배열의 인덱스가 마지막일 경우 newArr[i+1]-1은 NaN)
+                    if (newArr[i] != (newArr[i + 1] - 1)) { // newArr[i]의 숫자가 옆 숫자와 연속되지 않을 경우
+                        count += (newArr[i + 1] - 1) - newArr[i]; // count에 다음 숫자에서 현재 숫자를 뺀 수를 값으로 넣는다.
+                    }
+                }
+            }
+            return count; // 결과 출력
+        }
+
+        makeArrayConsecutive2([2, 3, 6, 8]); // 3 - ([4,5,7])
+    </script>
+</body>
+
+</html>
