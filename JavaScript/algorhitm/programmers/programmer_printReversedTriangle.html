@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로그래머스 문제 11번</title>
+</head>
+
+<body>
+    <script>
+        // printReversedTriangle 메소드는 양의 정수 num을 매개변수로 입력받습니다.
+        // 다음을 참고해 * (별) 로 높이가 num인 삼각형을 문자열로 리턴하는 printReversedTriangle 메소드를 완성하세요
+
+        // 높이(num) 가 3 일때 다음과 같은 문자열을 리턴하면 됩니다.
+
+        // ***
+        // **
+        // *
+
+
+        function printReversedTriangle(num) {
+            var result = '' // *을 담을 변수 선언
+            for (let i = num; i > 0; i--) { // num이 0이 될 때까지 역순으로 내려가기 위해 for loop 실행
+                result += '*'.repeat(i) + '\n' // i의 수만큼 *을 찍고 개행문자까지 더해서 result의 값으로 할당
+            }
+
+            return result //   결과 실행
+        }
+
+        // 아래는 테스트로 출력해 보기 위한 코드입니다.
+        console.log("결과 : " + '\n' + printReversedTriangle(3));
+
+        // ***
+        // **
+        // *
+    </script>
+</body>
+
+</html>
