@@ -43,12 +43,18 @@ app.post("/form_reciever", (req, res) => {
 
 <br/><br/>
 
+## GET 과 POST 를 언제 어떻게 써야할까?
 
-## GET과 POST를 언제 어떻게 써야할까?
+<b>GET</b>
 
-GET
+GET 은 서버로 부터 데이터를 불러올 때 주로 사용됩니다.<br/>
 
+<b>POST</b>
 
-POST
+GET 은 Query String 에 데이터 정보가 포함되어 가기 때문에<br/>
+사용자 정보와 같이 민감한 정보가 노출될 수 있습니다.<br/>
+그럴 때 POST 를 사용합니다.<br/>
+POST 는 바디에 정보를 숨겨서 데이터를 전송하기 때문에상대적으로 보안이 좋습니다.<br/>
+또한 POST 는 서버에 값을 바꾸는 경우 (게시판 글 저장, 수정, 삭제등..)에도 사용됩니다.<br/>
 
-- GET은 Query String 
+<br/><br/>
