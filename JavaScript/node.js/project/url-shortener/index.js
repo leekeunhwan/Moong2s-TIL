@@ -1,6 +1,11 @@
+require('dotenv').config()
+
+
 const express = require('express')
 const morgan = require('morgan')
-const randomstring = require('randomstring');
+const randomstring = require('randomstring')
+const bodyParser = require('body-parser')
+
 const app = express()
 
 const urls = [{
@@ -12,14 +17,49 @@ const urls = [{
 
 app.use('/static', express.static('public'))
 app.use(morgan('dev'))
+app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({
+    extended: false
+}))
 
 
 app.get('/', (req, res) => {
+    const host = req.get('host')
     res.render('index.ejs', {
+        host,
         urls
     })
 })
 
+app.get('/new', (req, res) => {
+    if (req.query.secret === process.env.SECRET) {
+        res.render('new.ejs', {
+            secret: process.env.SECRET
+        })
+    } else {
+        // 권한이 없을 때는 403을 설정해주는 것이 관례
+        res.status(403);
+        res.send('403 Forbidden');
+    }
+
+})
+
+app.post('/new', (req, res) => {
+    if (req.body.secret === process.env.SECRET) {
+        const longUrl = req.body.longUrl;
+        const slug = randomstring.generate(8)
+        urls.push({
+            slug,
+            longUrl
+        });
+        res.redirect('/')
+    } else {
+        res.status(403);
+        res.send('403 Forbidden');
+    }
+})
+
+// Express는 먼저 등록된 핸들러가 먼저 돌어가게 된다.
 app.get('/:slug', (req, res) => {
     const urlItem = urls.find(item => item.slug === req.params.slug)
     if (urlItem) {

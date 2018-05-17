@@ -11,12 +11,12 @@
   <table>
     <tr>
         <th>긴 URL</th>
-        <th>짤은 URL</th>
+        <th>짧은 URL</th>
     </tr>
     <% urls.forEach(urlItem => { %>
         <tr>
             <td><%= urlItem.longUrl %></td>
-            <td><%= urlItem.slug %></td>
+            <td><a href="//<%= host %>/<%= urlItem.slug %>"><%= urlItem.slug %></a></td>
         </tr>
     <% }) %>
   </table>

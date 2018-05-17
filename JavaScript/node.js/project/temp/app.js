@@ -1,4 +1,5 @@
 let express = require('express');
+let bodyParser = require('body-parser')
 let app = express();
 app.locals.pretty = true;
 
@@ -16,6 +17,27 @@ app.set('views', './views');
 // directory를 만들어서 담아서 사용한다.
 // 정적인 파일은 변경을 해도 새로고침 한번으로 바로 반영시킬 수 있다는 장점이 있다.
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({
+    extended: false
+}))
+
+
+app.get('/form', (req, res) => {
+    res.render('form')
+})
+
+app.get('/form_reciever', (req, res) => {
+    let title = req.query.title;
+    let description = req.query.description;
+    res.send(title + ',' + description);
+})
+
+
+app.post('/form_reciever', (req, res) => {
+    let title = req.body.title;
+    let description = req.body.description;
+    res.send(title + ',' + description);
+})
 
 // 템플릿이라고 주소를 치고 들어오는 사람들에게 temp라는 템플릿 파일을 웹페이지로 렌더링해서 전송한다.
 // 템플릿 엔진을 이용할 것이므로 res.send()대신 res.render()를 사용한다.
@@ -84,19 +106,25 @@ app.get('/login', function (req, res) {
 })
 
 
-app.get('/topic', (req, res) => {
+// /topic?id=0 과 같은 것을 사용하면 req.query.id지만
+// /topic/:id 처럼 사용하고 싶다면 req.params.id라고 하면 된다
+app.get('/topic/:id', (req, res) => {
     let topics = [
         'Javascript is....',
         'Nodejs is...',
         'Express is....'
     ];
     let output = `
-    <a href="/topic?id=${req.query.id}">JavaScript</a><br/>
-    <a href="/topic?id=${req.query.id}">Nodejs</a><br/>
-    <a href="/topic?id=${req.query.id}">Express</a><br/><br/><br/>
-    ${topics[req.query.id]}
+    <a href="/topic?id=0">JavaScript</a><br/>
+    <a href="/topic?id=1">Nodejs</a><br/>
+    <a href="/topic?id=2">Express</a><br/><br/><br/>
+    ${topics[req.params.id]}
     `;
     res.send(output);
+})
+
+app.get('/topic/:id/:mode', (req, res) => {
+    res.send(req.params.id + ", " + req.params.mode)
 })
 
 

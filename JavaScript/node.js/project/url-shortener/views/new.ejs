@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>새 URL 생성</h1>
+    <form action="/new" method="post">
+        <!--hidden타입의 속성으로 사용자에게 보이지않고 서버로 정보를 넣어줄 수 있다.-->
+        <input type="hidden" name="secret" value="<%= secret %>">
+        <label>긴 URL</label>
+        <input type="url" name="longUrl" required>
+        <button type="submit">전송</button>
+    </form>
+</body>
+</html>
