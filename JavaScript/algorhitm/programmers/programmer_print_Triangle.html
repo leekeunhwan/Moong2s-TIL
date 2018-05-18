@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로그래머스 문제 14번</title>
+</head>
+
+<body>
+    <script>
+        // printTriangle 메소드는 양의 정수 num을 매개변수로 입력받습니다.
+        // 다음을 참고해 *(별)로 높이가 num인 삼각형을 문자열로 리턴하는 printTriangle 메소드를 완성하세요
+        // printTriangle이 return하는 String은 개행문자('\n')로 끝나야 합니다.
+
+        // 높이가 3일때
+
+        // *
+        // **
+        // ***
+
+        // 높이가 5일때
+
+        // *
+        // **
+        // ***
+        // ****
+        // *****
+
+        function printTriangle(num) {
+            var result = '' // 별과 개행문자를 담을 변수 선언
+            for (let i = 1; i <= num; i++) { // 별이 1개부터 시작하므로 이렇게 for loop 실행
+                result += '*'.repeat(i) + '\n'; // 별을 i개만큼 result에 개행문자와 같이 더해준다.
+            }
+            return result //   결과 반환
+        }
+
+        // 아래는 테스트로 출력해 보기 위한 코드입니다. 
+        console.log(printTriangle(5));
+
+        // *
+        // **
+        // ***
+        // ****
+        // *****
+    </script>
+</body>
+
+</html>

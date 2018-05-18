@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로그래머스 문제 15번</title>
+</head>
+
+<body>
+    <script>
+        // 피보나치 수는 F(0) = 0, F(1) = 1 일 때, 2 이상의 n에 대하여 F(n) = F(n - 1) + F(n - 2) 가 적용되는 점화식입니다.
+        // 2 이상의 n이 입력되었을 때, fibonacci 함수를 제작하여 n번째
+        // 피보나치 수를 반환해 주세요.예를 들어 n = 3 이라면 2 를 반환해주면 됩니다.
+        // 재귀형식으로 피보나치를 풀 수 있지만 너무 나도 많은 콜백이 이루어지므로 가급적 루프로 피보나치를 풀도록 하자
+
+        function fiboLoop(n) {
+            let x = 0; // n이 0일때
+            let y = 1; // n이 1일때
+            for (let i = 0; i < n; i++) {
+                [x, y] = [y, x + y]; // x는 n일 때 피보나치 값, y는 n+1일 때 피보나치 값
+            }
+            return x;
+        }
+    </script>
+</body>
+
+</html>
