@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로그래머스 문제 17번</title>
+</head>
+
+<body>
+    <script>
+        // 문제 설명
+        // 자연수 N이 주어지면, N의 각 자릿수의 합을 구해서 return 하는 solution 함수를 만들어 주세요.
+        // 예를들어 N = 123이면 1 + 2 + 3 = 6을 return 하면 됩니다.
+
+        // 제한사항
+        // N의 범위 : 100,000,000 이하의 자연수
+
+        // 입출력 예
+        // N	answer
+        // 123	6
+        // 987	24
+        // 입출력 예 설명
+        // 입출력 예 #1
+        // 문제의 예시와 같습니다.
+
+        // 입출력 예 #2
+        // 9 + 8 + 7 = 24이므로 24를 return 하면 됩니다.
+        function solution(n) {
+            let numStr = n.toString(); // 자연수인데 length를 쓰기 위해 문자열로 형변환
+            let answer = 0; // 정답을 담을 변수 선언
+            for (let i = 0; i < numStr.length; i++) { // i가 문자열의 길이만큼 증가하는데
+                answer += parseInt(numStr[i]); // 정답에 자릿수를 앞에서부터 answer에 숫자형태의 값으로 담아서 합을 구함
+            }
+            return answer; // 정답 출력
+        }
+
+        console.log(123); // 6
+    </script>
+</body>
+
+</html>
