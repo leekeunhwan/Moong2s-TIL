@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로그래머스 문제 18번</title>
+</head>
+
+<body>
+    <script>
+        // 자연수 뒤집어 배열로 만들기
+        // 문제 설명
+        // 자연수 n을 뒤집어 각 자리 숫자를 원소로 가지는 배열 형태로 리턴해주세요. 예를들어 n이 12345이면 [5,4,3,2,1]을 리턴합니다.
+
+        // 제한 조건
+        // n은 10,000,000,000이하인 자연수입니다.
+        // 입출력 예
+        // n	return
+        // 12345	[5,4,3,2,1]
+
+        function solution(n) {
+            let answer = []; //   정답을 담을 변수 선언
+            let storage; // 중간에 형변환을 보다 쉽게 도와줄 변수 선언
+            let reverseNum = n.toString().split('').reverse().join('');
+            // 숫자형태를 문자열로 바꾼뒤 split을 통해 배열로 바꿔 reverse 메소드를 적용하고, 다시 문자열로 돌려주었다.
+            for (let i = 0; i < reverseNum.length; i++) { // for 루프를 사용하기 위해 문자열로 바꾼 것!
+                storage = parseInt(reverseNum[i]); // 문자열을 하나하나 숫자로 다시 바꿔서 storage에 담아준다.
+                answer.push(storage); // 하나씩 정답을 담을 배열로 보내주면 끝
+            }
+            return answer; // 정답 출력
+        }
+
+        solution[7425]; //  [5,2,4,7]
+    </script>
+</body>
+
+</html>
