@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로그래머스 문제 21번</title>
+</head>
+
+<body>
+    <script>
+        // JadenCase란 모든 단어의 첫 알파벳이 대문자이고, 
+        // 그 외의 알파벳은 소문자인 문자열입니다. 
+        // 문자열 s가 주어졌을 때, 
+        // s를 JadenCase로 바꾼 문자열을 리턴하는 함수, 
+        // solution을 완성해주세요.
+
+        // 제한 조건
+        // s는 길이 1 이상인 문자열입니다.
+        // s는 알파벳과 공백문자(" ")로 이루어져 있습니다.
+        // 입출력 예
+        // s	return
+        // 3people unFollowed me	3people Unfollowed Me
+        // for the last week	For The Last Week
+
+        function solution(s) {
+            let answer = ''; // 정답을 담을 변수 answer 서넝ㄴ
+            let newStr = s.toLowerCase(); // 처음에 인자로 받는 문자열에 중간중간 대문자도 들어가 있기에 다 소문자로 바꿔준다.
+            answer = newStr[0].toUpperCase(); // 첫번째 글자를 대문자로 바꿔줘서 정답 변수의 값으로 넣은 뒤
+            for (let i = 1; i < newStr.length; i++) { // 문자열의 두번째 글자부터
+                if (newStr[i - 1] == ' ') { // 해당 글자의 앞에 공배이 있는지 확인한 후
+                    answer += newStr[i].toUpperCase(); // 공백이 있을경우 대문자로 바꿔서 정답에 넣어준다.
+                } else { // 공백이 없을 경우에는
+                    answer += newStr[i] // 그냥 소문자인 상태 그대로 넣어준다.
+                }
+            }
+            return answer; // 정답 출력
+        }
+
+        solution('neVer Walk aLone'); // Never Walk Alone
+    </script>
+</body>
+
+</html>
