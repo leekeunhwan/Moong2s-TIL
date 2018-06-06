@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로그래머스 문제 20번</title>
+</head>
+
+<body>
+    <script>
+        // 함수 solution은 정수 x와 자연수 n을 입력 받아, 
+        // x부터 시작해 x씩 증가하는 숫자를 n개 지니는 리스트를 리턴해야 합니다. 
+        // 다음 제한 조건을 보고, 조건을 만족하는 함수, solution을 완성해주세요.
+
+        // 제한 조건
+        // x는 -10000000 이상, 10000000 이하인 정수입니다.
+        // n은 1000 이하인 자연수입니다.
+        // 입출력 예
+        // x	n	answer
+        // 2	5	[2,4,6,8,10]
+        // 4	3	[4,8,12]
+        // -4	2	[-4, -8]
+
+        function solution(x, n) {
+            let answer = []; // 정답을 담을 빈 배열의 변수 선언
+            const firstNum = x; // 초기 숫자들 firstNum이라는 변수에 값으로 담아준다.
+            answer.push(firstNum); // 그리고 처음의 값을 배열에 먼저 보낸다.
+            for (let i = 0; i < n - 1; i++) { // i는 0부터 시작하므로 n-1까지 증가하면 n번 만큼 증가하게 된다.
+                x += firstNum; // x에 초기값을 더해준다. - 다시 반복
+                answer.push(x); // x를 바로 answer로 푸쉬
+            }
+            return answer; // 정답을 출력한다.
+        }
+
+        solution(4, 5); //  [4,8,12,16,20]
+    </script>
+</body>
+
+</html>
