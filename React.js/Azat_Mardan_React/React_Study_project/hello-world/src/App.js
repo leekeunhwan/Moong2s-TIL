@@ -41,7 +41,25 @@ class App extends Component {
     }
   };
 
-  handleCompleteClick = e => {};
+  handleTodoItemComplete = id => {
+    this.setState({
+      todos: this.state.todos.map(t => {
+        const newTodo = {
+          ...t
+        };
+        if (t.id === id) {
+          newTodo.complete = true;
+        }
+        return newTodo;
+      })
+    });
+  };
+
+  handleTodoItemDelete = id => {
+    this.setState({
+      todos: this.state.todos.filter(t => id !== t.id)
+    });
+  };
 
   render() {
     const { todos, newTodoBody } = this.state;
@@ -59,40 +77,45 @@ class App extends Component {
         </label>
         <ul>
           {todos.map(todo => (
-            <li className={todo.complete ? "complete" : ""} key={todo.id}>
-              {todo.body}
-              <button
-                onClick={e => {
-                  this.setState({
-                    todos: todos.map(t => {
-                      const newTodo = {
-                        ...t
-                      };
-                      if (t.id === todo.id) {
-                        newTodo.complete = true;
-                      }
-                      return newTodo;
-                    })
-                  });
-                }}
-              >
-                완료
-              </button>
-              <button
-                onClick={e => {
-                  this.setState({
-                    // 삭제 기능은 이렇게 구현할 수 있다.
-                    // 같은 아이디 (클릭한 대상)은 제외한 것만 반환하는 식으로
-                    todos: todos.filter(t => todo.id !== t.id)
-                  });
-                }}
-              >
-                삭제
-              </button>
-            </li>
+            <TodoItem
+              key={todo.id}
+              {...todo}
+              onComplete={this.handleTodoItemComplete}
+              onDelete={this.handleTodoItemDelete}
+            />
           ))}
         </ul>
       </div>
+    );
+  }
+}
+
+class TodoItem extends Component {
+  render() {
+    const { id, body, complete, onComplete, onDelete } = this.props;
+    return (
+      <li className={complete ? "complete" : ""} key={id}>
+        {body}
+        <button
+          onClick={e => {
+            onComplete(id);
+          }}
+        >
+          완료
+        </button>
+        <button
+          onClick={e => {
+            // this.setState({
+            //   // 삭제 기능은 이렇게 구현할 수 있다.
+            //   // 같은 아이디 (클릭한 대상)은 제외한 것만 반환하는 식으로
+            //   todos: todos.filter(t => id !== t.id)
+            // });
+            onDelete(id);
+          }}
+        >
+          삭제
+        </button>
+      </li>
     );
   }
 }
