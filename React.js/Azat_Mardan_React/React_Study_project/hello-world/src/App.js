@@ -1,21 +1,24 @@
 // 불러와서 모듈처럼 사용할 수 있는 것 (import)
 import React, { Component } from 'react';
 
-const todos = [
-  {
-    id: 1,
-    body: 'React 공부',
-    complete: true
-  },
-  {
-    id: 2,
-    body: 'Redux 공부',
-    complete: false
-  }
-]
 
 class App extends Component {
-  render() {
+    state = {
+    todos: [
+            {
+              id: 1,
+              body: 'React 공부',
+              complete: true
+            },
+            {
+              id: 2,
+              body: 'Redux 공부',
+              complete: false
+            }
+          ]
+    }
+    render() {
+        const { todos } = this.state;
     return (
       <div>
         <h1>todo List</h1>
