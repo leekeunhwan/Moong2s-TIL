@@ -1,29 +1,65 @@
 // 불러와서 모듈처럼 사용할 수 있는 것 (import)
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
+let count = 0;
 
 class App extends Component {
-    state = {
+  state = {
     todos: [
-            {
-              id: 1,
-              body: 'React 공부',
-              complete: true
-            },
-            {
-              id: 2,
-              body: 'Redux 공부',
-              complete: false
-            }
-          ]
+      {
+        id: count++,
+        body: "React 공부",
+        complete: true
+      },
+      {
+        id: count++,
+        body: "Redux 공부",
+        complete: false
+      }
+    ],
+    newTodoBody: ""
+  };
+
+  // 이벤트 리스너 앞에 handle을 붙이는 것이 관례!
+  handleInputChange = e => {
+    this.setState({ newTodoBody: e.target.value });
+  };
+
+  handleButtonClick = e => {
+    if (this.state.newTodoBody) {
+      const newTodo = {
+        body: this.state.newTodoBody,
+        complete: false,
+        id: count++
+      };
+
+      this.setState({
+        todos: [...this.state.todos, newTodo],
+        newTodoBody: ""
+      });
     }
-    render() {
-        const { todos } = this.state;
+  };
+
+  render() {
+    const { todos, newTodoBody } = this.state;
     return (
       <div>
-        <h1>todo List</h1>
+        <h1>할 일 목록</h1>
+        <label>
+          새 할일
+          <input
+            type="text"
+            value={newTodoBody}
+            onChange={this.handleInputChange}
+          />
+          <button onClick={this.handleButtonClick}>추가</button>
+        </label>
         <ul>
-          {todos.map(todo => (<li className={todo.complete ? 'complete' : ''} key={todo.id}>{todo.body}</li>))}
+          {todos.map(todo => (
+            <li className={todo.complete ? "complete" : ""} key={todo.id}>
+              {todo.body}
+            </li>
+          ))}
         </ul>
       </div>
     );
