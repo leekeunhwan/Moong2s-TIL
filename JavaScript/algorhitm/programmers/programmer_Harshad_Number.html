@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로그래머스 문제 22번</title>
+</head>
+
+<body>
+    <script>
+        // 양의 정수 x가 하샤드 수이려면 x의 자릿수의 합으로 x가 나누어져야 합니다. 
+        // 예를 들어 18의 자릿수 합은 1+8=9이고, 18은 9로 나누어 떨어지므로 18은 하샤드 수입니다. 
+        // 자연수 n을 입력받아 n이 하샤드 수인지 아닌지 검사하는 함수, solution을 완성해주세요.
+
+        // 제한 조건
+        // n은 1 이상, 10000 이하인 정수입니다.
+        // 입출력 예
+        // arr	return
+        // 10	true
+        // 12	true
+        // 11	false
+        // 13	false
+        // 입출력 예 설명
+        // 입출력 예 #1
+        // 10의 모든 자릿수의 합은 1입니다. 10은 1로 나누어 떨어지므로 10은 하샤드 수입니다.
+
+        // 입출력 예 #2
+        // 12의 모든 자릿수의 합은 3입니다. 12는 3으로 나누어 떨어지므로 12는 하샤드 수입니다.
+
+        // 입출력 예 #3
+        // 11의 모든 자릿수의 합은 2입니다. 11은 2로 나누어 떨어지지 않으므로 11는 하샤드 수가 아닙니다.
+
+        // 입출력 예 #4
+        // 13의 모든 자릿수의 합은 4입니다. 13은 4로 나누어 떨어지지 않으므로 13은 하샤드 수가 아닙니다.
+
+
+        function solution(x) {
+            let answer = true; // 답을 담을 변수 answer에 boolean 값인 true를 초기값으로 준다.
+            let newStr = x.toString(); // x는 숫자이기 때문에 length 메소드를 사용하기 위해 문자열로 바꿔준다.
+            let numSum = 0; // 하샤드 수가 수의 자릿수의 합을 구해서 원래의 수를 나눠야 알 수 있으므로 자릿수의 합을 담을 변수 numSum 선언
+            for (let i = 0; i < newStr.length; i++) { // i는 문자열로 바꾼 newStr의 length만큼 증가
+                numSum += parseInt(newStr[i]); // numSum은 문자열인 nesStr[i]를 숫자형태로 바꾸어서 합들을 저장
+            }
+            if (x % numSum) { // x가 numSum으로 나눴을 때 나머지가 있으면
+                answer = false; // 하샤드 수가 아님
+            } else { // x가 numSum으로 나눠지면 
+                answer = true // 하샤드 수가 맞음
+            }
+            return answer; // 정답 출력
+        }
+
+        solution(20); // true
+    </script>
+
+</body>
+
+</html>
