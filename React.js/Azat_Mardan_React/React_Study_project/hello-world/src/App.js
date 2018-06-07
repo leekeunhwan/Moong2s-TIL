@@ -1,5 +1,6 @@
 // 불러와서 모듈처럼 사용할 수 있는 것 (import)
 import React, { Component } from "react";
+import "./App.css";
 
 let count = 0;
 
@@ -40,6 +41,8 @@ class App extends Component {
     }
   };
 
+  handleCompleteClick = e => {};
+
   render() {
     const { todos, newTodoBody } = this.state;
     return (
@@ -58,6 +61,23 @@ class App extends Component {
           {todos.map(todo => (
             <li className={todo.complete ? "complete" : ""} key={todo.id}>
               {todo.body}
+              <button
+                onClick={e => {
+                  this.setState({
+                    todos: todos.map(t => {
+                      const newTodo = {
+                        ...t
+                      };
+                      if (t.id === todo.id) {
+                        newTodo.complete = true;
+                      }
+                      return newTodo;
+                    })
+                  });
+                }}
+              >
+                완료
+              </button>
             </li>
           ))}
         </ul>
