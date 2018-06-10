@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로그래머스 문제 23번</title>
+</head>
+
+<body>
+    <script>
+        // 단어 s의 가운데 글자를 반환하는 함수, 
+        // solution을 만들어 보세요. 
+        // 단어의 길이가 짝수라면 가운데 두글자를 반환하면 됩니다.
+
+        // 재한사항
+        // s는 길이가 1 이상, 100이하인 스트링입니다.
+        // 입출력 예
+        // s	return
+        // abcde	c
+        // qwer    we
+
+        function solution(s) {
+            let answer = ''; // 정답을 담을 변수 answer를 빈 문자열이라는 값을 주어서 선언
+            if (s.length % 2 != 0) { // 문자열의 길이가 홀수일 때
+                answer = s[Math.floor(s.length / 2)]; //  문자열의 index는 0부터 시작하므로 floor로 소수를 내려서 반환한다.
+                // 문자열이 5글자라면 2.5에서 내림을 하면 2, 결곽적으로 가운데에 있는 글자를 answer의 값으로 보낼 수 있다.
+            } else { // 문자열의 길이가 짝수 일 때 
+                answer = s[Math.floor(s.length / 2) - 1] + s[Math.floor(s.length / 2)] // 가운데에 있는 두글자를 반환해야 하므로
+                // 내려서 숫자를 구한 것에 -1을 하여 앞에 글자까지 함께 answer의 값으로 보낸다.
+            }
+            return answer; // 정답 출력
+        }
+        solution('asdv') // sd
+    </script>
+</body>
+
+</html>
