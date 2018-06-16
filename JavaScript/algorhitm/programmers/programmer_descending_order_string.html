@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로그래머스 문제 25번</title>
+</head>
+
+<body>
+    <script>
+        // 문자열 s에 나타나는 문자를 큰것부터 작은 순으로 정렬해 새로운 문자열을 리턴하는 함수, solution을 완성해주세요.
+        // s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보다 작은 것으로 간주합니다.
+
+        // 제한 사항
+        // str은 길이 1 이상인 문자열입니다.
+        // 입출력 예
+        // s	return
+        // Zbcdefg  gfedcbZ
+
+        function solution(s) {
+            let answer = [
+                [],
+                []
+            ];
+            // 정답을 담을 answer란 변수에 빈배열 요소를 2개 가진 배열을 값으로 주었다. 
+            // 빈배열을 요소로 두개 넣은 이유는 소문자와 대문자를 따로 담을 의도!
+            for (let i = 0; i < s.length; i++) { // i는 입력받은 문자열의 길이만큼 증가
+                if (s[i] === s[i].toUpperCase()) { // 만약 s의 문자열중 대문자가 있을 경우
+                    answer[1].push(s[i]) // 대문자는 뒤로 가야하므로 answer의 빈 배열요소중 두번째 배열로 보낸다.
+                } else {
+                    answer[0].push(s[i]) // 소문자일경우 대문자보다 앞으로 와야하기에 answer의 빈 배열요소중 첫번째 배열로 보낸다.
+                }
+            }
+            let ans1 = answer[0].sort().reverse().join(''); // ans1이란 변수를 만들어 소문자를 담은 첫번째 배열요소를 내림차순 정렬하고 문자열로 바꿔준다.
+            let ans2 = answer[1].sort().reverse().join(''); // ans2도 역시 위처럼 내림차순 정렬하고 문자열로 바꿔준다.
+            answer = [ans1, ans2].join('') // 정렬한 값을 가지고 answer의 배열에 넣어 문자열로 반환해준다.
+            return answer // 정답 출력
+        }
+
+        solution('Zbcdefg'); // 'gfedcbZ'
+
+        /*
+            숫자의 경우 내림차순시에는
+            sort(function(a,b) {
+                return b-a;
+            })
+            라고 할 수 있지만
+            문자열의 경우에는 계산을 할 수 없으므로
+            sort를 하고 reverse를 하는 형식으로 내림차순을 적용해야 한다.
+            
+            ex] let arr = ['a', 'c', 'b']
+                arr = arr.sort().reverse().join('');
+                console.log(arr);  -> cba
+        */
+    </script>
+</body>
+
+</html>
