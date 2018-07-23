@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로그래머스 문제 32번</title>
+</head>
+
+<body>
+    <script>
+        // 문제 설명
+        // 문자열로 구성된 리스트 strings와, 정수 n이 주어졌을 때, 각 문자열의 인덱스 n번째 글자를 기준으로 오름차순 정렬하려 합니다. 
+        // 예를 들어 strings가 [sun, bed, car]이고 n이 1이면 각 단어의 인덱스 1의 문자 u, e, a로 strings를 정렬합니다.
+
+        // 제한 조건
+        // strings는 길이 1 이상, 50이하인 배열입니다.
+        // strings의 원소는 소문자 알파벳으로 이루어져 있습니다.
+        // strings의 원소는 길이 1 이상, 100이하인 문자열입니다.
+        // 모든 strings의 원소의 길이는 n보다 큽니다.
+        // 인덱스 1의 문자가 같은 문자열이 여럿 일 경우, 사전순으로 앞선 문자열이 앞쪽에 위치합니다.
+        // 입출력 예
+        // strings	n	return
+        // [sun, bed, car]	1	[car, bed, sun]
+        // [abce, abcd, cdx]	2	[abcd, abce, cdx]
+        // 입출력 예 설명
+        // 입출력 예 1
+        // sun, bed, car의 1번째 인덱스 값은 각각 u, e, a 입니다. 이를 기준으로 strings를 정렬하면 [car, bed, sun] 입니다.
+
+        // 입출력 예 2
+        // abce와 abcd, cdx의 2번째 인덱스 값은 c, c, x입니다. 따라서 정렬 후에는 cdx가 가장 뒤에 위치합니다. 
+        // abce와 abcd는 사전순으로 정렬하면 abcd가 우선하므로, 답은 [abcd, abce, cdx] 입니다.
+
+        function solution(strings, n) {
+            return strings.sort(
+                (a, b) =>
+                // n번째 글자가 같다면 a와 b를 비교해서 사전순으로 정렬, n번째 글자가 다르다면 a의 n번째 글자를 기준으로 정렬한다.
+                a[n] === b[n] ? a.localeCompare(b) : a[n].localeCompare(b[n])
+            );
+        }
+
+        // 생각보다 풀고나니 비슷하게 푼 사람들이 많았다.
+        // 아래는 또 다른 풀이
+        /* function solution(strings, n) {
+                let answer = strings.sort(function (a, b) {
+                    // a의 n번째 인덱스 글자의 값이 b의 n번째 인덱스 글자의 값과 같다면
+                    // (charCodeAt은 인덱스를 받아서 글자를 UTF-16 코드를 나타내는 0부터 65535 사이의 정수를 반환해준다.)
+                    if(a.charCodeAt(n) == b.charCodeAt(n)) {
+                        // (저번에 누군가가 ++i와 같이 전치연산자를 왜 쓰는지 물어봤는데
+                        //  자세히 설명하기에 알고리즘 문제 주석에서는 부적절하기에 추후에 따로 정리해서 올릴예정이다.
+                        //  쉽게 설명하자면 전치연산자나 후치연산자를 둘다 사용해도 작동할 경우
+                        //  전치연산자를 사용하면 성능상 이점을 볼 수 있기 때문에 사용한다.)
+                        for(let i = 0; i < a.length; ++i) {
+                            // 만약 a와 b의 글자를 한글자씩 비교한다. 문자가 다를 경우
+                            if(a.charCodeAt(i) != b.charCodeAt(i))
+                                // 그 문자를 기준으로 비교하여 사전순으로 정렬하낟.
+                                return a.charCodeAt(i) - b.charCodeAt(i);
+                            }
+                        }
+                    // 만약 a와 b의 n번째 인덱스에 해당하는 글자의 값이 다를 경우
+                    // 그 n번째의 해당하는 값을 비교해서 사전순으로 정렬한다.
+                    // 빠른 이해를 위해 사전순으로 정렬한다고 했지만 a.charCodeAt(n)은 숫자다.
+                    return a.charCodeAt(n) - b.charCodeAt(n);
+                })
+                // 정답 출력
+                return answer;
+            }
+        */
+    </script>
+</body>
+
+</html>
