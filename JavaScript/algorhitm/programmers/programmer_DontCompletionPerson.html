@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>프로그래머스 문제 35번</title>
+  </head>
+
+  <body>
+    <script>
+      // 문제 설명
+      // 수많은 마라톤 선수들이 마라톤에 참여하였습니다.
+      // 단 한 명의 선수를 제외하고는 모든 선수가 마라톤을 완주하였습니다.
+
+      // 마라톤에 참여한 선수들의 이름이 담긴 배열 participant와
+      // 완주한 선수들의 이름이 담긴 배열 completion이 주어질 때,
+      // 완주하지 못한 선수의 이름을 return 하도록 solution 함수를 작성해주세요.
+
+      // 제한사항
+      // 마라톤 경기에 참여한 선수의 수는 1명 이상 100, 000명 이하입니다.
+      // completion의 길이는 participant의 길이보다 1 작습니다.
+      // 참가자의 이름은 1개 이상 20개 이하의 알파벳 소문자로 이루어져 있습니다.
+      // 참가자 중에는 동명이인이 있을 수 있습니다.
+
+      // 입출력 예
+      // participant / completion / return
+      // [leo, kiki, eden] / [eden, kiki] / leo
+      // [marina, josipa, nikola, vinko, filipa] / [josipa, filipa, marina, nikola] / vinko
+      // [mislav, stanko, mislav, ana] / [stanko, ana, mislav] / mislav
+
+      // 입출력 예 설명
+
+      // 예제 #1
+      // leo는 참여자 명단에는 있지만, 완주자 명단에는 없기 때문에 완주하지 못했습니다.
+
+      // 예제 #2
+      // vinko는 참여자 명단에는 있지만, 완주자 명단에는 없기 때문에 완주하지 못했습니다.
+
+      // 예제 #3
+      // mislav는 참여자 명단에는 두 명이 있지만,
+      // 완주자 명단에는 한 명밖에 없기 때문에 한명은 완주하지 못했습니다.
+
+      function solution(participant, completion) {
+        // 정답을 위한 변수 선언
+        let answer = '';
+        // 참가자의 배열인 participant를 정렬
+        let sortedArr1 = participant.sort();
+        // 완주자의 배열인 participant를 정렬
+        let sortedArr2 = completion.sort();
+
+        // while의 조건을 걸기위해 초기값 설정
+        let i = 0;
+
+        // 참가자의 배열을 돌면서
+        while (i < sortedArr1.length) {
+          // 정렬했기 때문에 일치하지 않은 것이 있으면 낙오자이므로 sortedArr[i]가 정답
+          if (sortedArr1[i] != sortedArr2[i]) {
+            answer = sortedArr1[i];
+            // 더 이상 연산할 필요가 없음
+            break;
+            // 만약에 끝까지 돌았는데 그전까지 일치한게 없으면,
+            // 어찌되었든 한명의 낙오자는 발생하기에 마지막까지 남은 sortedArr1의 요소가 낙오자가 됨
+          } else if (sortedArr2[i] == undefined) {
+            answer = sortedArr1[i];
+          }
+          // 무한루프 방지 i++해도 무방함
+          i = i + 1;
+        }
+
+        // 정답 도출
+        return answer;
+      }
+
+      // 정확성  테스트
+      // 테스트 1 〉	통과(4.97ms, 36.9MB)
+      // 테스트 2 〉	통과(4.92ms, 37.2MB)
+      // 테스트 3 〉	통과(7.07ms, 37.5MB)
+      // 테스트 4 〉	통과(10.91ms, 37.6MB)
+      // 테스트 5 〉	통과(10.40ms, 37.9MB)
+
+      // 효율성  테스트
+      // 테스트 1 〉	통과(107.88ms, 53MB)
+      // 테스트 2 〉	통과(207.55ms, 60.7MB)
+      // 테스트 3 〉	통과(239.28ms, 66.8MB)
+      // 테스트 4 〉	통과(257.07ms, 69.6MB)
+      // 테스트 5 〉	통과(210.86ms, 69.3MB)
+
+      // 통과했다고 끝이 아니고, 이 문제가 해시탐색인데
+      // 어떻게 접근하는 것이 이상적인지 알아보기
+    </script>
+  </body>
+</html>
