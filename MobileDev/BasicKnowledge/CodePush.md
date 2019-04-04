@@ -26,3 +26,11 @@ js수정시에만 코드푸시를 사용하고, 새로운 파일의 추가/삭�
 아래의 URL을 보면서 학습! (굉장히 친절하게 잘 만들어 놓으셨음)<br>
 
 [https://github.com/kjk7034/ReactNativeStudy/blob/master/docs/CodePush.md]
+
+- 사전에 다음은 설치되어야 한다.
+
+```
+$ npm install -g --save code-push-cli
+$ npm install -g --save react-native-cli
+$ npm install -g appcenter-cli
+```
