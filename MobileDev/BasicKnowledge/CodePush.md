@@ -95,7 +95,7 @@ $ react-native link react-native-code-push
 5. react-native의 경우 App.js(상위 컴포넌트)에 코드를 추가해준다.
 
 ```js
-import codePush from "react-native-code-push";
+import codePush from 'react-native-code-push';
 
 const codePushOptions = {
   checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
