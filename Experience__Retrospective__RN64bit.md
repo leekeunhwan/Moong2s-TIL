@@ -100,12 +100,15 @@ java.lang.OutOfMemoryError
 
 > 해결 방법
 
-1. 자바스크립트 코어 설치
+1. `jsc-android-buildscripts` 설치
 2. build.gradle > dependencies에 다음과 같은 코드 추가
 
 ```
 implementation ("com.facebook.react:react-native:${RNVersionNumber}") { force = true }
 ```
+<br>
+
+jsc-android-buildscripts : https://github.com/react-native-community/jsc-android-buildscripts
 
 <br>
 <br>
