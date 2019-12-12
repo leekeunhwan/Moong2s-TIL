@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로그래머스 문제 39번</title>
+</head>
+
+<body>
+    <script>
+        // 프린터
+        // 문제 설명
+        // 일반적인 프린터는 인쇄 요청이 들어온 순서대로 인쇄합니다.그렇기 때문에 중요한 문서가 나중에 인쇄될 수 있습니다.
+        // 이런 문제를 보완하기 위해 중요도가 높은 문서를 먼저 인쇄하는 프린터를 개발했습니다.
+        // 이 새롭게 개발한 프린터는 아래와 같은 방식으로 인쇄 작업을 수행합니다.
+
+        // 1. 인쇄 대기목록의 가장 앞에 있는 문서(J) 를 대기목록에서 꺼냅니다.
+        // 2. 나머지 인쇄 대기목록에서 J보다 중요도가 높은 문서가 한 개라도 존재하면 J를 대기목록의 가장 마지막에 넣습니다.
+        // 3. 그렇지 않으면 J를 인쇄합니다.
+        // 예를 들어, 4 개의 문서(A, B, C, D) 가 순서대로 인쇄 대기목록에 있고 중요도가 2 1 3 2 라면 C D A B 순으로 인쇄하게 됩니다.
+
+        // 내가 인쇄를 요청한 문서가 몇 번째로 인쇄되는지 알고 싶습니다.위의 예에서 C는 1 번째로, A는 3 번째로 인쇄됩니다.
+
+        // 현재 대기목록에 있는 문서의 중요도가 순서대로 담긴 배열 priorities와 내가 인쇄를 요청한 문서가 
+        // 현재 대기목록의 어떤 위치에 있는지를 알려주는 location이 매개변수로 주어질 때, 
+        // 내가 인쇄를 요청한 문서가 몇 번째로 인쇄되는지
+        // return 하도록 solution 함수를 작성해주세요.
+
+        // 제한사항
+        // 현재 대기목록에는 1 개 이상 100 개 이하의 문서가 있습니다.
+        // 인쇄 작업의 중요도는 1~9 로 표현하며 숫자가 클수록 중요하다는 뜻입니다.
+        // location은 0 이상(현재 대기목록에 있는 작업 수 - 1) 이하의 값을 가지며 대기목록의 가장 앞에 있으면 0, 두 번째에 있으면 1 로 표현합니다.
+        // 입출력 예
+        // priorities location
+        // return [2, 1, 3, 2] 2 1
+        //        [1, 1, 9, 1, 1, 1] 0 5
+        // 입출력 예 설명
+        // 예제 #1
+
+        // 문제에 나온 예와 같습니다.
+
+        // 예제 # 2
+
+        // 6 개의 문서(A, B, C, D, E, F) 가 인쇄 대기목록에 있고 
+        // 중요도가 1 1 9 1 1 1 이므로 C D E F A B 순으로 인쇄합니다.
+
+        function solution(priorities, locations) {
+            // 정답을 위한 변수
+            let answer = 0;
+            // 최대값 숫자를 비교하기 위한 배열
+            let docArr = priorities;
+            // 라벨링이 필요해서 만든 배열
+            let labeledArr = [];
+            // 정렬된 결과를 위한 배열
+            let container = [];
+
+            // 라벨링..!
+            // 같은 숫자들도 중복될 수 있기에 라벨링을 해야한다고 생각이 들었다.
+            // [1,1,9,1,1,1,1] 이런 케이스는 라벨링 안하면 야바위급이라 못찾는다
+            // 그래서 라벨링을 하기 위해 labeledArr에 location정보가 같은건 myDoc = true로
+            // 아닌건 myDoc = false로 하였다.
+            for (let i = 0; i < priorities.length; i++) {
+                labeledArr.push({
+                    value: priorities[i],
+                    myDoc: i === locations ? true : false
+                })
+            }
+
+            // 라벨링된 배열이 0이 될떄까지
+            while (labeledArr.length > 0) {
+                // 주어진 배열의 최대값과 일치하면, 중요도가 제일 높은 문서니까
+                if (Math.max.apply(null, docArr) === labeledArr[0].value) {
+                    // 정렬된 결과를 보여줄 배열로 이동
+                    container.push(labeledArr[0])
+                    // 최대값은 그럼 이동된 결과이므로 원본과 라벨링된 배열 모두 삭제
+                    docArr.splice(docArr.findIndex(item => item === labeledArr[0].value), 1)
+                    labeledArr.splice(0, 1);
+                } else {
+                    // 일치하지 않으면 중요도가 높은게 아니므로 맨뒤로 이동
+                    // shift를 할수도 있겠지만 요게 편했다.
+                    const data = labeledArr.splice(0, 1);
+                    labeledArr.push(data[0])
+                }
+
+                // 한개가 남았을때는 그냥 보내고, 원본과 라벨링된 배열 모두 삭제
+                if (docArr.length === 1) {
+                    container.push(labeledArr[0])
+                    docArr.splice(0, 1)
+                    labeledArr.splice(0, 1);
+                }
+            }
+
+            // 정답은 정렬된 결과에서 myDoc이 true인 객체의 index를 찾아서 +1 시켜준다. (인덱스니까 +1 필요)
+            answer = container.findIndex(item => item.myDoc === true) + 1
+            // 정답 도출
+            return answer;
+        }
+
+        // 점점 문제를 포기하기보다 잡고 있으면 어떻게든 풀긴하는데
+        // 좀 더 효율적인 접근이 필요한 것 같다.
+        // 논리적인 부분도 키워야 한다.
+        // 중복된 값이 있는데 내 것을 찾아야할 경우에는 라벨링을 한다는 그런 생각들..
+        // 디테일이 필요하다..!
+        // 계속 앞으로도 하루에 한문제씩 풀어보면 내년 4월에는 좀 풀리지 않을까..?
+        // 자료구조들도 자바스크립트 class로 구현해보고 좀 더 깊이있게 공부해보자.
+        // 또한 논리사고, 진리표등.. 컴퓨터적인 사고를 도식화해보고, 공식으로 표현도 해보고
+        // 생각만이 아닌 기록을 해보도록 노력하자.
+    </script>
+</body>
+
+</html>
