@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로그래머스 문제 41번</title>
+</head>
+
+<body>
+    <script>
+        // 문제 설명
+        // 행렬의 덧셈은 행과 열의 크기가 같은 두 행렬의 같은 행, 같은 열의 값을 서로 더한 결과가 됩니다.
+        // 2 개의 행렬 arr1과 arr2를 입력받아, 행렬 덧셈의 결과를 반환하는 함수, solution을 완성해주세요.
+
+        // 제한 조건
+        // 행렬 arr1, arr2의 행과 열의 길이는 500 을 넘지 않습니다.
+
+        // 입출력 예
+        // arr1 | arr2 | return
+        // [[1, 2], [2, 3]] | [[3, 4], [5, 6]] | [[4, 6], [7, 9]]
+        // [[1], [2]] | [[3], [4]] | [[4],[6]]
+
+        function solution(arr1, arr2) {
+            // 정답을 담을 배열
+            let answer = [[]];
+            // 임시로 데이터를 담을 배열 
+            let tempArr = []
+            // 문제가 잘못출제된건 아닌지 혹시나하고 모르는 케이스 대비
+            if (arr1.length !== arr2.length) return '조건이 안맞음 : 에러 발생'
+
+            // 둘다 동일한 크기의 배열이라고 할때 
+            // 큰 껍데기 : 제일 외각에 있는 배열 [[]]
+            for (let i = 0; i < arr1.length; i++) {
+                // 안쪽 껍데기 : 진짜 배열 []
+                for (let j = 0; j < arr1[i].length; j++) {
+                    // 배열안에 미리 빈배열이 있으면 
+                    if (answer[i]) {
+                        // 값을 넣어서 대입해준다.
+                        answer[i][j] = arr1[i][j] + arr2[i][j]
+                    } else {
+                        // 하지만 그렇지 않으면 임시 배열로 덧셈한 데이터 보내고
+                        tempArr.push(arr1[i][j] + arr2[i][j])
+                    }
+                }
+                // 임시 배열에 데이터가 있을 경우
+                if (tempArr.length > 0) {
+                    // 정답의 배열로 보낸다.
+                    answer.push(tempArr)
+                    // 그리고 임시배열 초기화
+                    tempArr = []
+                }
+            }
+
+            // 정답 제출
+            return answer;
+        }
+
+        // 되게 쉬운 문제
+        // 과거에는 왜 못풀고 있었던 걸까...
+        // 근래에 알고리즘 공부한게 도움이 많이 되는 것 같다.
+    </script>
+</body>
+
+</html>
