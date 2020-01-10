@@ -62,42 +62,55 @@
         // [4, 1, 2, 3]
 
         function solution(N, stages) {
+            // 답을 담을 배열
             let answer = [];
-            let tempArr = [];
-            let dummyArr = stages
-            let stageCount = 0;
-            while (stageCount != N) {
+            // 스테이지 카운팅 및 무한루프 방지용 숫자형 변수 선언
+            let stageCount = 1;
+            // 스테이지의 갯수 모두 카운트 할때까지
+            while (stageCount != N + 1) {
+                // 실패횟수는 0
                 let fail = 0;
-                for (let i = 0; i < dummyArr.length; i++) {
-                    if (dummyArr[i] <= stageCount + 1) {
+                //  사용자가 현재 도전 중인 스테이지의 번호가 담긴 배열을 돌면서
+                for (let i = 0; i < stages.length; i++) {
+                    // 도전 중인 스테이지의 번호가 스테이지보다 작거나 같으면
+                    if (stages[i] <= stageCount) {
+                        // 실패
                         fail++;
-                        tempArr.push(tempArr.length === 0 ? i : i - tempArr.length)
                     }
                 }
+                // 해당 스테이지를 검사하고 나면
+                // stage와 failPercent를 담은 객체를 정답으로 이동
                 answer.push({
-                    stage: stageCount + 1,
-                    failPercent: tempArr.length > 0 ?
-                        fail / dummyArr.length : 0
+                    stage: stageCount,
+                    failPercent: fail > 0 ?
+                        fail / stages.length : 0
                 })
-                if (tempArr.length > 0) {
-                    for (let k = 0; k < tempArr.length; k++) {
-                        const spliceResult = dummyArr.splice(tempArr[k], 1)
-                    }
-                }
+                // 실패한 친구들은 이제 빠져야 하므로, 살아남은 친구들로 배열 갱신
+                stages = stages.filter(item => item > stageCount)
+                // 실패횟수 초기화
                 fail = 0;
-                tempArr = []
+                // 스테이지 카운트 업
                 stageCount++;
             }
+
+            // 정답에 담아놓은 데이터를 가지고
             answer.sort(function (a, b) {
+                // failPercent 기준 오름차순으로 정렬하되
                 return a.failPercent > b.failPercent ? -1 :
                     a.failPercent < b.failPercent ? 1 :
+                    // 둘다 같을 경우 스테이지가 낮은 요소가 앞으로 오도록 함.
                     a.failPercent === b.failPercent ? a.stage < b.stage ? -1 : 1 : 0;
             })
+            // 정렬이 끝났으니 스테이지만 뽑아서 제출
             return answer.map(item => item.stage);
         }
 
-        // 문제 풀면 92.6점으로 시간초과 실패 2문제가 있음...
-        // 이거 해결하고 주석달아서 내일중으로 올릴예정...
+        // 자려다 풀음..!
+        // 말로 과정을 적고 코드로 옮기는 건 좋은데
+        // 옮기는 방식이 너무 후져서 아까 2문제에서 시간 초과가 났었다.
+        // 최대한 반복문 안쓰고 풀 수 있도록 사고하는 방식이 필요하다.
+        // 예전에는 풀 엄두도 안났는데 그래도 이제는 쉽게 쉽게 되는 것 같다.
+        // 조금만 더 힘내보자.
     </script>
 </body>
 
