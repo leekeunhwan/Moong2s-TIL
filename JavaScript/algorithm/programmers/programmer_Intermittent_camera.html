@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로그래머스 문제 50번</title>
+</head>
+
+<body>
+    <script>
+        // 문제 설명
+        // 고속도로를 이동하는 모든 차량이 고속도로를 이용하면서 
+        // 단속용 카메라를 한 번은 만나도록 카메라를 설치하려고 합니다.
+        // 고속도로를 이동하는 차량의 경로 routes가 매개변수로 주어질 때, 
+        // 모든 차량이 한 번은 단속용 카메라를 만나도록 하려면 
+        // 최소 몇 대의 카메라를 설치해야 하는지를 return 하도록 solution 함수를 완성하세요.
+
+        // 제한사항
+
+        // 차량의 대수는 1대 이상 10, 000대 이하입니다.
+        // routes에는 차량의 이동 경로가 포함되어 있으며 
+        // routes[i][0]에는 i번째 차량이 고속도로에 진입한 지점, 
+        // routes[i][1]에는 i번째 차량이 고속도로에서 나간 지점이 적혀 있습니다.
+        // 차량의 진입 / 진출 지점에 카메라가 설치되어 있어도 카메라를 만난것으로 간주합니다.
+        // 차량의 진입 지점, 진출 지점은 - 30,000 이상 30,000 이하입니다.
+        // 입출력 예
+
+        // routes	return
+        // [[-20, 15], [-14, -5], [-18, -13], [-5, -3]]	2
+
+        // 입출력 예 설명
+        // - 5 지점에 카메라를 설치하면 두 번째, 네 번째 차량이 카메라를 만납니다.
+        // - 15 지점에 카메라를 설치하면 첫 번째, 세 번째 차량이 카메라를 만납니다.
+
+        function solution(routes) {
+            // 치량의 대수가 한대가 지나가도 1개는 설치해야 하므로, 초기값 1
+            let answer = 1;
+            // 진입이 빠른 순으로 정렬
+            const sortedArr = routes.sort((a, b) => a[0] - b[0])
+            // 진입이 빠른 케이스를 기준으로 진출 구해놓고
+            let firstCarExit = sortedArr[0][1]
+            // 정렬된 배열을 돌면서
+            for (let i = 1; i < sortedArr.length; i++) {
+                // 다음의 차의 진입과
+                const nextCarJoin = sortedArr[i][0];
+                // 다음의 차의 진출을 구해놓고
+                const nextCarExit = sortedArr[i][1];
+
+                // 비교를 하는데, 
+                // 다음차의 진입과 다음차의 진출보다 기준 케이스의 진출이 더 크면
+                // 즉, 다음차가 현재 기준 케이스 안에 있으면
+                // ([-20, 30]안에 [-10, 10]이 있는 것과 같은 경우)
+                if (nextCarJoin <= firstCarExit && firstCarExit >= nextCarExit) {
+                    // 다음차가 기준이 된다. 
+                    // 기준이 좁으면 좁을수록, 설치해야되는 타이밍이 명확하다.
+                    firstCarExit = nextCarExit
+                    // 만약에 다음차가 진입되기 전에 기준차가 진출되면
+                    // ([-20, 30]이 기준인데 [-15, 60]과 같다면)
+                } else if (nextCarJoin > firstCarExit) {
+                    // 다음차를 기준으로 넘기고
+                    firstCarExit = nextCarExit
+                    // 설치를 해야하므로 정답을 증가시킨다.
+                    answer++;
+                }
+            }
+            // 정답 도출
+            return answer;
+        }
+
+        // Greedy가 매번 순간순간 다음은 생각안하고 최선의 수를 두는 거라고만 알고 있었는데
+        // 정렬을 시켜놓고 매순간을 기준으로 다음다음 이렇게 구할줄은 몰랐다.
+        // 그림이나 표를 그려보고 하면 훨씬 좋은 것 같다.
+        // 이게 그리디구나, DP구나 하는 그런 감을 잡을 때까지 많이 풀어보고,
+        // 많은 문제들을 들여다 봐야할 것 같다.
+    </script>
+</body>
+
+</html>
