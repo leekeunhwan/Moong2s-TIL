@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로그래머스 문제 52번</title>
+</head>
+
+<body>
+    <script>
+        // 숫자 야구 게임이란 2명이 서로가 생각한 숫자를 맞추는 게임입니다.
+
+        // 각자 서로 다른 1~9까지 3자리 임의의 숫자를 정한 뒤 
+        // 서로에게 3자리의 숫자를 불러서 결과를 확인합니다.
+        // 그리고 그 결과를 토대로 상대가 정한 숫자를 예상한 뒤 맞힙니다.
+
+        // * 숫자는 맞지만, 위치가 틀렸을 때는 볼
+        // * 숫자와 위치가 모두 맞을 때는 스트라이크
+        // * 숫자와 위치가 모두 틀렸을 때는 아웃
+        // 예를 들어, 아래의 경우가 있으면
+
+        // A: 123
+        // B: 1스트라이크 1볼.
+        // A : 356
+        // B: 1스트라이크 0볼.
+        // A : 327
+        // B: 2스트라이크 0볼.
+        // A : 489
+        // B: 0스트라이크 1볼.
+        // 이때 가능한 답은 324와 328 두 가지입니다.
+
+        // 질문한 세 자리의 수, 스트라이크의 수, 볼의 수를 담은 2차원 배열 baseball이 매개변수로 주어질 때, 
+        // 가능한 답의 개수를 return 하도록 solution 함수를 작성해주세요.
+
+        // 제한사항
+        // 질문의 수는 1 이상 100 이하의 자연수입니다.
+        // baseball의 각 행은[세 자리의 수, 스트라이크의 수, 볼의 수]를 담고 있습니다.
+        // 입출력 예
+        // baseball	return
+        // [[123, 1, 1], [356, 1, 0], [327, 2, 0], [489, 0, 1]]	2
+        // 입출력 예 설명
+        // 문제에 나온 예와 같습니다.
+
+
+        function solution(baseball) {
+            // 정답을 담을 변수
+            let answer = 0;
+            // 숫자야구의 경우 0은 못들어가고 중복이 허용 안되니까
+            // 123 ~ 987로 좁힐수 있다.
+            for (let i = 123; i <= 987; i++) {
+                // 한글자씩 비교하기 위해서 문자열로 변환
+                const tempGame = i.toString();
+                // 나중에 이 숫자가 유효한지 알기위한 장치
+                let flag = true;
+
+                // 숫자는 중복되면 안되기에 중복되면 패스
+                if (tempGame[0] === tempGame[1] ||
+                    tempGame[1] === tempGame[2] ||
+                    tempGame[0] === tempGame[2]) continue;
+
+                // 0도 허용이 안되기에 있으면 패스
+                if (tempGame[0] === '0' ||
+                    tempGame[1] === '0' ||
+                    tempGame[2] === '0') continue;
+
+                // 주어진 게임을 보면서
+                for (let j = 0; j < baseball.length; j++) {
+                    // 스트라이크 초기화
+                    let strike = 0;
+                    // 볼 초기화
+                    let ball = 0;
+                    // 볼인지 스트라이크인지 파악을 위해
+                    for (let k = 0; k < 3; k++) {
+                        for (let h = 0; h < 3; h++) {
+                            // 오리지널 게임을 본떠놓고
+                            let originalGame = baseball[j][0].toString();
+                            // 자릿수도 갖고 숫자도 같으면
+                            if (k === h && tempGame[k] === originalGame[h]) {
+                                // 스트라이크
+                                strike++;
+                                continue;
+                                // 자릿수는 틀리지만 숫자가 같으면
+                            } else if (tempGame[k] === originalGame[h]) {
+                                // 볼
+                                ball++;
+                                continue;
+                            }
+                        }
+                    }
+                    // 스트라이크가 오리지널 게임의 스트라이크 수와 다르거나 볼이 오리지널 게임의 볼 수와 다르면
+                    // 즉 쉽게 말해, 주어진 게임과 스트라이크와 볼이 같아야
+                    // 가능한 답의 조건이 가능하다
+                    // 123과 123은 3스트라이크다, 하지만 오리지널 게임에서 123은 1S1B이다.
+                    // 이런 경우는 답이될 수 없다.
+                    // 하지만, 324의경우 1S(2)1B(3)이기에 가능하다.
+                    if (strike != baseball[j][1] || ball != baseball[j][2]) {
+                        // 틀렸음
+                        flag = false;
+                        // 종료
+                        break;
+                    }
+                }
+                // 맞으면 정답 카운트+1
+                if (flag) answer++;
+            }
+            // 정답 출력
+            return answer;
+        }
+
+        // 완전 탐색을 하는 것을 왜 두려워 하게 되는건지 모르겠다.
+        // 뭔가 잘못되고 있다는 생각이 왜 드는건지..
+        // 조건을 적고 하나씩 검사해보자..
+    </script>
+</body>
+
+</html>
