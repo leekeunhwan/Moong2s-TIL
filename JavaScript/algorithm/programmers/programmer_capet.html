@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>프로그래머스 문제 53번</title>
+</head>
+
+<body>
+    <script>
+        // 문제 설명
+        // Leo는 카펫을 사러 갔다가 아래 그림과 같이 중앙에는 빨간색으로 칠해져 있고 
+        // 모서리는 갈색으로 칠해져 있는 격자 모양 카펫을 봤습니다.
+
+        // image.png
+
+        // Leo는 집으로 돌아와서 아까 본 카펫의 빨간색과 갈색으로 색칠된 격자의 개수는 기억했지만, 
+        // 전체 카펫의 크기는 기억하지 못했습니다.
+
+        // Leo가 본 카펫에서 갈색 격자의 수 brown, 빨간색 격자의 수 red가 매개변수로 주어질 때 
+        // 카펫의 가로, 세로 크기를 순서대로 배열에 담아 return 하도록 solution 함수를
+        // 작성해주세요.
+
+        // 제한사항
+        // 갈색 격자의 수 brown은 8 이상 5,000 이하인 자연수입니다.
+        // 빨간색 격자의 수 red는 1 이상 2,000,000 이하인 자연수입니다.
+        // 카펫의 가로 길이는 세로 길이와 같거나, 세로 길이보다 깁니다.
+
+        // 입출력 예
+        // brown red return
+        // 10 2 [4, 3]
+        // 8 1 [3, 3]
+        // 24 24 [8, 6]
+
+        function solution(brown, red) {
+            // 정답을 담을 배열 준비
+            let answer = [];
+            // 가로 길이를 나타낼 변수 선언
+            let width = 0;
+            // 세로 길이를 나타낼 변수 선언
+            let height = 0;
+
+            // 완전 탐색을 해도 되지만 효율적으로 나눠봐도 좋다.
+            // +1은 red가 1인 경우를 위해서
+            for (let i = 1; i <= red / 2 + 1; i++) {
+                // 너비는 i
+                width = i;
+                // 높이는 레드카펫을 i로 나눴을때 나머지가 없으면 red/i 아니면 red/i + 1
+                height = red % i === 0 ? red / i : red / i + 1
+                // 만약에 브라운의 갯수가 레드를 덮은 갯수(가로(앞,뒤), 세로(앞,뒤), 꼭지점(4))와 동일하다면
+                if (width * 2 + height * 2 + 4 === brown) {
+                    // 정답은 가로가 세로보다 길거나 같다고 하였으니 큰수를 가로, 작은수를 세로로 한다,
+                    answer = [Math.max(width, height) + 2, Math.min(width, height) + 2]
+                    // loop 종료
+                    break;
+                };
+            }
+            // 정답 출력
+            return answer;
+        }
+
+        // 이정도까지여도 좋은 것 같다.
+        // 이제 점점 복잡한 것도 풀어보고 다시 다른 CS공부도 병행하자
+    </script>
+</body>
+
+</html>
