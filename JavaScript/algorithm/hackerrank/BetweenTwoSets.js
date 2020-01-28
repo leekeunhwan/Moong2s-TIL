@@ -110,7 +110,7 @@ function getTotalX(a, b) {
       // 정답에 해당 숫자 담기
       answer.push(aLastNum);
     }
-    // 무한루프 방지ㄴ
+    // 무한루프 방지
     aLastNum++;
   }
   // 정답은 숫자의 갯수니까 length 반환
