@@ -43,10 +43,12 @@
 // each element of array A is an integer within the range [1..1,000,000,000].
 
 function solution(A) {
+    // sort 하는 것조차 아까워서..
     if (A.length === 1) {
         return A[0] !== 1 ? 0 : 1;
     }
 
+    // 가독성을 고려한다면 뒤로 써도 될듯
     const sortedA = A.sort((a,b) => a - b);
 
     if (sortedA[0] !== 1) {
