@@ -43,6 +43,20 @@
 
       // 자바스크립트는 부동소수점 이슈도 있고, 큰 숫자에 대해서 계산시 overflow가 날 수 있기에
       // 나중에 한번에 나누면 틀리는 경우도 생긴다.
+
+      // 메모이제이션으로 풀어보기
+
+      function solution(n) {
+        const memo = {};
+        memo[0] = 0;
+        memo[1] = 1;
+        for (let i=2; i<=n; i++) {
+          memo[i] = (memo[i-1] + memo[i-2]) % 1234567;
+        }
+        
+        return memo[n]
+      }
+
     </script>
   </body>
 </html>
