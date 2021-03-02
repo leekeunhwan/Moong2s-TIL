@@ -61,12 +61,12 @@
 
 function anagram(s) {
     const stringSize = s.length;
-    
+
     if (stringSize % 2 !== 0) {
         return -1
     }
-    
-    const sliceTarget = stringSize/2;
+
+    const sliceTarget = stringSize / 2;
     let firstStr = s.slice(0, sliceTarget);
     const secondStr = s.slice(sliceTarget, stringSize);
     let answer = 0;
@@ -76,7 +76,7 @@ function anagram(s) {
             firstStr = firstStr.replace(secondStr[i], "");
             continue;
         }
-        
+
         answer++;
     }
 
