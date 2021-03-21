@@ -55,9 +55,9 @@
 function lonelyinteger(a) {
     let answer;
     const removeDupArr = [...new Set(a)];
-    removeDupArr.forEach((unit) => {
-        if (a.filter(element => element === unit).length === 1) {
-            answer = unit;
+    removeDupArr.forEach((uniqElement) => {
+        if (a.filter(element => element === uniqElement).length === 1) {
+            answer = uniqElement;
         }
     })
 
